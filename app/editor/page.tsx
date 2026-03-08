@@ -1148,7 +1148,7 @@ export default function EditorPage() {
                 setMaterialsFolders(payload.folders ?? []);
               }}
             >
-              Create missing material folders
+              Refresh material folders
             </button>
             <button
               type="button"
