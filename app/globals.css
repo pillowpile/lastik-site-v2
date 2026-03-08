@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ef5ce8;
+  --bg-2: #f271ec;
+  --ink: #fff8fb;
+  --label-bg: #bafed9;
+  --label-ink: #1a1f1e;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-manrope);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--font-manrope), sans-serif;
+}

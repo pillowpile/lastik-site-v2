@@ -1,0 +1,346 @@
+import type { SiteContent } from "./types";
+
+export const defaultSiteContent: SiteContent = {
+  version: 1,
+  home: {
+    heroTitle: "ЛАСТИК",
+    footerText: "LASTIK © 2007-2026",
+    referenceSiteUrl: "",
+    projects: [
+      { id: "p1", title: "VK / NEO", shape: "landscape", tone: "neo" },
+      {
+        id: "p11",
+        title: "EAPTEKA",
+        shape: "landscape",
+        tone: "mint",
+        href: "/projects/eapteka",
+        thumbnailSrc: "/materials/eapteka/eapteka_thumb.webm",
+      },
+      { id: "p3", title: "SBER / ЗВУК", shape: "landscape", tone: "aqua" },
+      { id: "p4", title: "VK / MINI APPS", shape: "landscape", tone: "sky", href: "/projects/vk-miniapps" },
+      { id: "p5", title: "ОСТОРОЖНО СОБЧАК", shape: "landscape", tone: "flat" },
+      { id: "p6", title: "УРАЛСИБ", shape: "landscape", tone: "night" },
+      { id: "p7", title: "R.O.C.S", shape: "portrait", tone: "mint", thumbnailSrc: "/materials/rocs/rocs_thumb.webm" },
+      { id: "p8", title: "SBER", shape: "tall", tone: "lime" },
+      { id: "p9", title: "MAIL.RU", shape: "portrait", tone: "ice" },
+      { id: "p10", title: "SMILE / LUCKY COIN", shape: "portrait", tone: "peach" },
+      { id: "p2", title: "MTC / НИКУСАЙ", shape: "landscape", tone: "anime" },
+    ],
+  },
+  projects: {
+    vkMiniApps: {
+      backLabel: "← Back to projects",
+      title: "Mini Apps",
+      materialsFolder: "vk-miniapps",
+      tags: ["2d", "3d", "mix"],
+      referenceStyle: {
+        mode: "default",
+        siteUrl: "",
+        styleName: "",
+        useThisStyle: false,
+        useSiteStyle: true,
+      },
+      heroVideoSrc: "/materials/vk-miniapps/mini_apps_hero.mp4",
+      heroPoster: "/materials/vk-miniapps/61a638183743827.654545d9bfb9d.png",
+      introTexts: [
+        "We introduce our animated ad for mini-apps within the social network",
+        "We kicked off with the idea of crafting bold 3D visuals and integrating them with lively 2D frame-by-frame animated effects",
+        "Our narratives unfold in a minimalist space adorned with lively disco elements",
+      ],
+      sections: [
+        {
+          id: "frames",
+          header: "Frames",
+          about: "",
+          blocks: [
+            {
+              id: "frames-row",
+              type: "row",
+              row: {
+                id: "frames-grid",
+                layout: "grid-3",
+                items: Array.from({ length: 12 }, (_, i) => ({
+                  id: `frame-${i + 1}`,
+                  src: `/materials/vk-miniapps/new/${i + 1}.png`,
+                  alt: `Frame ${i + 1}`,
+                })),
+              },
+            },
+          ],
+        },
+        {
+          id: "characters",
+          header: "Characters",
+          about: "",
+          blocks: [
+            {
+              id: "c2-row",
+              type: "row",
+              row: {
+                id: "c2",
+                layout: "row-2",
+                equalHeight: true,
+                items: [
+                  { id: "c2-1", src: "/materials/vk-miniapps/new/c2-1.png", alt: "C2 scene 1", ar: 2.494802 },
+                  { id: "c2-2", src: "/materials/vk-miniapps/new/c2-2.gif", alt: "C2 scene 2", ar: 1.775148 },
+                ],
+              },
+            },
+            {
+              id: "c3-row",
+              type: "row",
+              row: {
+                id: "c3",
+                layout: "row-2",
+                equalHeight: true,
+                items: [
+                  { id: "c3-1", src: "/materials/vk-miniapps/new/c3-1.png", alt: "C3 scene 1", ar: 1.898734 },
+                  { id: "c3-2", src: "/materials/vk-miniapps/new/c3-2.gif", alt: "C3 scene 2", ar: 1.581722 },
+                ],
+              },
+            },
+            {
+              id: "c1-row",
+              type: "row",
+              row: {
+                id: "c1",
+                layout: "row-3",
+                equalHeight: true,
+                items: [
+                  { id: "c1-1", src: "/materials/vk-miniapps/new/c1-1.gif", alt: "C1 motion 1", ar: 1.535836 },
+                  { id: "c1-2", src: "/materials/vk-miniapps/new/c1-2.gif", alt: "C1 motion 2", ar: 0.659341 },
+                  { id: "c1-3", src: "/materials/vk-miniapps/new/c1-3.gif", alt: "C1 motion 3", ar: 0.707547 },
+                ],
+              },
+            },
+            {
+              id: "characters-text-1",
+              type: "text",
+              text: "The journey to craft 3D scenes for our project started right from design exploration with initial rough sketches and concepts setting the stage",
+            },
+            {
+              id: "characters-text-2",
+              type: "text",
+              text: "We sketch in a rather rough manner to maintain the characters' liveliness and to freely search for and change details.",
+            },
+            {
+              id: "characters-sub-1",
+              type: "subheading",
+              text: "Characters in motion",
+            },
+            {
+              id: "girls-row",
+              type: "row",
+              row: {
+                id: "girls",
+                layout: "row-3",
+                equalHeight: true,
+                items: [
+                  { id: "girl-1", src: "/materials/vk-miniapps/new/girl1.png", alt: "Character in motion 1", ar: 1.801802 },
+                  { id: "girl-2", src: "/materials/vk-miniapps/new/girl2.png", alt: "Character in motion 2", ar: 1.801802 },
+                  { id: "girl-3", src: "/materials/vk-miniapps/new/girl3.png", alt: "Character in motion 3", ar: 1.775148 },
+                ],
+              },
+            },
+            {
+              id: "characters-sub-2",
+              type: "subheading",
+              text: "And our beloved character?",
+            },
+            {
+              id: "characters-text-3",
+              type: "text",
+              text: "That's the unpredictable little cloud, whimsically dictating the weather based on its mood",
+            },
+            {
+              id: "cloud-row",
+              type: "row",
+              row: {
+                id: "cloud",
+                layout: "row-3",
+                equalHeight: true,
+                items: [
+                  { id: "cloud-1", src: "/materials/vk-miniapps/new/cloud1.png", alt: "Cloud character 1", ar: 1.775148 },
+                  { id: "cloud-2", src: "/materials/vk-miniapps/new/cloud2.png", alt: "Cloud character 2", ar: 1.775148 },
+                  { id: "cloud-3", src: "/materials/vk-miniapps/new/cloud3.gif", alt: "Cloud character 3", ar: 1.639344 },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: "backgrounds",
+          header: "Backgrounds & Effects",
+          about: "",
+          blocks: [
+            {
+              id: "bg-text-1",
+              type: "text",
+              text: "For each scene, various effects were drawn, and we carefully selected the ones that perfectly complemented the action and visuals",
+            },
+            {
+              id: "bg-sub-1",
+              type: "subheading",
+              text: "First sketches",
+            },
+            {
+              id: "sketch-row-1",
+              type: "row",
+              row: {
+                id: "sketch-single",
+                layout: "row-1",
+                items: [{ id: "sketch-1", src: "/materials/vk-miniapps/new/sketch1.png", alt: "First sketches 1" }],
+              },
+            },
+            {
+              id: "sketch-row-2",
+              type: "row",
+              row: {
+                id: "sketch-pair",
+                layout: "row-2",
+                items: [
+                  { id: "sketch-2", src: "/materials/vk-miniapps/new/sketch2.png", alt: "First sketches 2" },
+                  { id: "sketch-3", src: "/materials/vk-miniapps/new/sketch3.png", alt: "First sketches 3" },
+                ],
+              },
+            },
+            {
+              id: "bg-sub-2",
+              type: "subheading",
+              text: "Sketch and final scene",
+            },
+            {
+              id: "zip-row",
+              type: "row",
+              row: {
+                id: "zip",
+                layout: "row-2",
+                equalHeight: true,
+                items: [
+                  { id: "zip-1", src: "/materials/vk-miniapps/new/zip1.gif", alt: "Zip scene 1", ar: 1.211207 },
+                  { id: "zip-2", src: "/materials/vk-miniapps/new/zip2.gif", alt: "Zip scene 2", ar: 1.778656 },
+                ],
+              },
+            },
+            {
+              id: "cards-row",
+              type: "row",
+              row: {
+                id: "cards",
+                layout: "row-1",
+                items: [{ id: "cards-1", src: "/materials/vk-miniapps/new/1222.png", alt: "Final cards scene" }],
+              },
+            },
+          ],
+        },
+        {
+          id: "animation",
+          header: "Animation",
+          about: "",
+          blocks: [
+            {
+              id: "anim-text-1",
+              type: "text",
+              text: "To envision the entire future animation and to have a better sense of the 3D animation, we created a detailed frame by frame rough animation. For the dance sequences, we relied on video references, and for some atypical movements, we recorded our own videos",
+            },
+            {
+              id: "backstage-row",
+              type: "row",
+              row: {
+                id: "backstage",
+                layout: "row-3",
+                equalHeight: true,
+                items: [
+                  { id: "backstage-1", src: "/materials/vk-miniapps/new/backstage1.gif", alt: "Animation reference 1", ar: 1.060071 },
+                  { id: "backstage-2", src: "/materials/vk-miniapps/new/backstage2.gif", alt: "Animation reference 2", ar: 2.146691 },
+                  { id: "backstage-3", src: "/materials/vk-miniapps/new/backstage3.gif", alt: "Animation reference 3", ar: 1.176471 },
+                ],
+              },
+            },
+            {
+              id: "dance-row",
+              type: "row",
+              row: {
+                id: "dance",
+                layout: "row-2",
+                equalHeight: true,
+                items: [
+                  { id: "dance-1", src: "/materials/vk-miniapps/new/dance1.gif", alt: "Dance reference 1", ar: 1.598579 },
+                  { id: "dance-2", src: "/materials/vk-miniapps/new/dance2.gif", alt: "Dance reference 2", ar: 1.778656 },
+                ],
+              },
+            },
+          ],
+        },
+      ],
+      thanksText: "Thanks!",
+    },
+    eapteka: {
+      backLabel: "← Back to projects",
+      title: "Eapteka",
+      materialsFolder: "eapteka",
+      tags: ["3d", "ai"],
+      referenceStyle: {
+        mode: "default",
+        siteUrl: "",
+        styleName: "",
+        useThisStyle: false,
+        useSiteStyle: true,
+      },
+      heroVideoSrc: "/materials/eapteka/sber_eapteka_hero.mp4",
+      introTexts: [],
+      sections: [],
+      thanksText: "",
+    },
+  },
+  specialPages: {
+    artdirCourse: {
+      backLabel: "← Back to projects",
+      title: "Артдир курс",
+      materialsFolder: "artdir-kurs",
+      tags: ["mix"],
+      referenceStyle: {
+        mode: "default",
+        siteUrl: "",
+        styleName: "",
+        useThisStyle: false,
+        useSiteStyle: true,
+      },
+      introTexts: ["Курс по арт-дирекшену: программа, процесс и результаты студентов."],
+      sections: [],
+      thanksText: "",
+    },
+    studio: {
+      backLabel: "← Back to projects",
+      title: "Про студию",
+      materialsFolder: "studio",
+      tags: ["mix"],
+      referenceStyle: {
+        mode: "default",
+        siteUrl: "",
+        styleName: "",
+        useThisStyle: false,
+        useSiteStyle: true,
+      },
+      introTexts: ["Рассказываем, как устроены процессы студии и какие проекты мы ведем."],
+      sections: [],
+      thanksText: "",
+    },
+    contacts: {
+      backLabel: "← Back to projects",
+      title: "Контакты",
+      materialsFolder: "contacts",
+      tags: ["ai"],
+      referenceStyle: {
+        mode: "default",
+        siteUrl: "",
+        styleName: "",
+        useThisStyle: false,
+        useSiteStyle: true,
+      },
+      introTexts: ["Свяжитесь с нами по проектам, курсам и партнерствам."],
+      sections: [],
+      thanksText: "",
+    },
+  },
+};
