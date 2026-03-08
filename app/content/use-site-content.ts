@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { cloneDefaultContent, loadSiteContent, SITE_CONTENT_EVENT } from "./storage";
+import { cloneDefaultContent, loadSiteContent, normalizeSiteContent, SITE_CONTENT_EVENT } from "./storage";
 import type { SiteContent } from "./types";
 
 export function useSiteContent(): SiteContent {
-  const [content, setContent] = useState<SiteContent>(() => cloneDefaultContent());
+  const [content, setContent] = useState<SiteContent>(() => normalizeSiteContent(cloneDefaultContent()));
 
   useEffect(() => {
     setContent(loadSiteContent());

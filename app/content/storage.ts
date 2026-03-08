@@ -6,6 +6,7 @@ import type { ProjectPageContent, SiteContent } from "./types";
 
 export const SITE_CONTENT_KEY = "lastik.siteContent.v1";
 export const SITE_CONTENT_EVENT = "site-content-updated";
+const DEFAULT_REFERENCE_SITE_URL = "https://pp-web2.netlify.app";
 
 export function cloneDefaultContent(): SiteContent {
   return structuredClone(defaultSiteContent);
@@ -202,6 +203,9 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
   }
   if (typeof next.home.referenceSiteUrl !== "string") {
     next.home.referenceSiteUrl = "";
+  }
+  if (!next.home.referenceSiteUrl.trim()) {
+    next.home.referenceSiteUrl = DEFAULT_REFERENCE_SITE_URL;
   }
   const defaultEapteka = defaultSiteContent.projects.eapteka;
   const defaultEaptekaCard = defaultSiteContent.home.projects.find((card) => card.href === "/projects/eapteka");
@@ -545,28 +549,32 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
   return next;
 }
 
+export function normalizeSiteContent(content: SiteContent): SiteContent {
+  return ensureRequiredProjects(content);
+}
+
 export function loadSiteContent(): SiteContent {
   if (typeof window === "undefined") {
-    return ensureRequiredProjects(cloneDefaultContent());
+    return normalizeSiteContent(cloneDefaultContent());
   }
 
   const raw = window.localStorage.getItem(SITE_CONTENT_KEY);
   if (!raw) {
-    return ensureRequiredProjects(cloneDefaultContent());
+    return normalizeSiteContent(cloneDefaultContent());
   }
 
   try {
     const parsed = JSON.parse(raw) as SiteContent;
     if (!parsed || typeof parsed !== "object") {
-      return ensureRequiredProjects(cloneDefaultContent());
+      return normalizeSiteContent(cloneDefaultContent());
     }
-    const normalized = ensureRequiredProjects(parsed);
+    const normalized = normalizeSiteContent(parsed);
     if (JSON.stringify(normalized) !== JSON.stringify(parsed)) {
       window.localStorage.setItem(SITE_CONTENT_KEY, JSON.stringify(normalized));
     }
     return normalized;
   } catch {
-    return ensureRequiredProjects(cloneDefaultContent());
+    return normalizeSiteContent(cloneDefaultContent());
   }
 }
 
