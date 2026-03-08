@@ -225,5 +225,5 @@ export default async function DynamicProjectPage({
     thanksText: "",
   };
 
-  return <ProjectPageClient content={fallback} globalReferenceSiteUrl="https://pp-web2.netlify.app" />;
+  return <ProjectPageClient slug={slug} content={fallback} globalReferenceSiteUrl="https://pp-web2.netlify.app" />;
 }

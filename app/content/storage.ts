@@ -7,7 +7,8 @@ import type { ProjectPageContent, SiteContent } from "./types";
 export const SITE_CONTENT_KEY = "lastik.siteContent.v1";
 export const SITE_CONTENT_EVENT = "site-content-updated";
 const DEFAULT_REFERENCE_SITE_URL = "https://pp-web2.netlify.app";
-const LOCAL_STORAGE_CONTENT_ENABLED = process.env.NEXT_PUBLIC_SITE_CONTENT_SOURCE === "local-storage";
+const LOCAL_STORAGE_CONTENT_ENABLED =
+  process.env.NEXT_PUBLIC_SITE_CONTENT_SOURCE === "local-storage" || process.env.NODE_ENV !== "production";
 
 export function cloneDefaultContent(): SiteContent {
   return structuredClone(defaultSiteContent);
@@ -27,6 +28,7 @@ const HOME_CARD_SLUG_BY_ID: Record<string, string> = {
   p9: "mail-ru",
   p10: "love-generation",
   p11: "eapteka",
+  p12: "yandex-incl",
 };
 const HOME_CARD_TITLE_BY_ID: Record<string, string> = {
   p1: "VK / NEO",
@@ -212,6 +214,7 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
   const defaultEaptekaCard = defaultSiteContent.home.projects.find((card) => card.href === "/projects/eapteka");
   const defaultRocsCard = defaultSiteContent.home.projects.find((card) => normalizeLookup(card.title) === "rocs");
   const defaultUralsibCard = defaultSiteContent.home.projects.find((card) => card.title.toLowerCase() === "уралсиб");
+  const defaultYandexCard = defaultSiteContent.home.projects.find((card) => card.href === "/projects/yandex-incl");
 
   const eaptekaByFolder = findProjectKeyByMaterialsFolder(next.projects, "eapteka");
   const eaptekaByTitle = findProjectKeyByTitle(next.projects, "eapteka") ?? findProjectKeyByTitle(next.projects, "аптека");
@@ -525,6 +528,19 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
       );
       if (!hasUralsib) {
         next.home.projects.push(structuredClone(defaultUralsibCard));
+      }
+    }
+
+    if (defaultYandexCard) {
+      const hasYandex = next.home.projects.some(
+        (card) =>
+          card.id === defaultYandexCard.id ||
+          card.href === defaultYandexCard.href ||
+          normalizeLookup(card.title).includes("yandex") ||
+          normalizeLookup(card.title).includes("inclusive")
+      );
+      if (!hasYandex) {
+        next.home.projects.push(structuredClone(defaultYandexCard));
       }
     }
 

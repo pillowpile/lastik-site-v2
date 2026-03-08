@@ -1,6 +1,10 @@
+"use client";
+
 import { CasePageView } from "@/app/components/case-page-view";
-import { defaultSiteContent } from "@/app/content/default-content";
+import { useSiteContent } from "@/app/content/use-site-content";
 
 export default function VkMiniAppsProjectPage() {
-  return <CasePageView content={defaultSiteContent.projects.vkMiniApps} globalReferenceSiteUrl="https://pp-web2.netlify.app" />;
+  const siteContent = useSiteContent();
+
+  return <CasePageView content={siteContent.projects.vkMiniApps} globalReferenceSiteUrl={siteContent.home.referenceSiteUrl} />;
 }

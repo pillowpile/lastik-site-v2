@@ -88,6 +88,14 @@ export const defaultSiteContent: SiteContent = {
         thumbnailSrc: "/materials/love-generation/thumb/love_generation-thumb.mp4",
       },
       {
+        id: "p12",
+        title: "YANDEX / INCLUSIVE",
+        shape: "landscape",
+        tone: "aqua",
+        href: "/projects/yandex-incl",
+        thumbnailSrc: "/materials/yandex-incl/thumb/ya_incl-thumb.mp4",
+      },
+      {
         id: "p2",
         title: "MTC / НИКУСАЙ",
         shape: "landscape",
