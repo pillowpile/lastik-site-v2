@@ -13,6 +13,22 @@ export function cloneDefaultContent(): SiteContent {
 
 const PAGE_TAGS = new Set(["2d", "3d", "ai", "mix"]);
 const SPECIAL_PAGE_KEYS: Array<keyof SiteContent["specialPages"]> = ["artdirCourse", "studio", "contacts"];
+const HOME_CARD_SLUG_BY_ID: Record<string, string> = {
+  p1: "vk-neo",
+  p2: "mts",
+  p3: "zvuk",
+  p4: "vk-miniapps",
+  p5: "sobchak",
+  p6: "uralsib",
+  p7: "rocs",
+  p8: "sber-terminal",
+  p9: "mail-ru",
+  p10: "love-generation",
+  p11: "eapteka",
+};
+const HOME_CARD_TITLE_BY_ID: Record<string, string> = {
+  p1: "VK / NEO",
+};
 
 function zvukStoryboardSrc(index: number): string {
   return index === 4 || index === 7 ? `/materials/zvuk/sb/${index}.jpg` : `/materials/zvuk/sb/${index}.png`;
@@ -401,25 +417,26 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
 
   if (defaultEaptekaCard) {
     const normalizedCards = next.home.projects.map((card) => {
+      const forcedSlug = HOME_CARD_SLUG_BY_ID[card.id];
       const projectSlug = hrefToProjectSlug(card.href);
       const titleFallbackSlug =
         canonicalProjectSlug(card.title) || canonicalProjectSlug(card.id) || canonicalProjectSlug(card.href ?? "");
-      const effectiveSlug = projectSlug || titleFallbackSlug;
+      const effectiveSlug = projectSlug || forcedSlug || titleFallbackSlug;
       let resolvedKey = effectiveSlug ? resolveProjectKeyBySlug(next.projects, effectiveSlug) : null;
       if (effectiveSlug && !resolvedKey) {
         next.projects[effectiveSlug] = createProjectPlaceholder(effectiveSlug, card.title);
         resolvedKey = effectiveSlug;
       }
-      const canonicalHref = resolvedKey
-        ? `/projects/${keyToSlug(resolvedKey)}`
-        : effectiveSlug
-          ? `/projects/${effectiveSlug}`
+      const canonicalHref = effectiveSlug
+        ? `/projects/${effectiveSlug}`
+        : resolvedKey
+          ? `/projects/${keyToSlug(resolvedKey)}`
           : undefined;
-      const folderForThumb = resolvedKey
+      const folderForThumb = forcedSlug || (resolvedKey
         ? sanitizeProjectKey(next.projects[resolvedKey].materialsFolder ?? "") || sanitizeProjectKey(keyToSlug(resolvedKey))
-        : sanitizeProjectKey(effectiveSlug ?? "");
+        : sanitizeProjectKey(effectiveSlug ?? ""));
       const normalizedThumb = normalizeAssetPath(card.thumbnailSrc, folderForThumb);
-      const fallbackThumb = THUMB_BY_FOLDER[folderForThumb];
+      const fallbackThumb = THUMB_BY_FOLDER[folderForThumb] || THUMB_BY_FOLDER["vk-neo"];
       const shouldNormalizeNeoTitle =
         card.id === "p1" ||
         normalizeLookup(card.title) === "vkheo" ||
@@ -462,6 +479,7 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
       }
       return {
         ...card,
+        ...(HOME_CARD_TITLE_BY_ID[card.id] ? { title: HOME_CARD_TITLE_BY_ID[card.id] } : {}),
         ...(shouldNormalizeNeoTitle ? { title: "VK / NEO" } : {}),
         ...(normalizedThumb || fallbackThumb ? { thumbnailSrc: normalizedThumb || fallbackThumb } : {}),
         href: canonicalHref,
