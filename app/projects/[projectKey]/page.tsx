@@ -1,63 +1,31 @@
-"use client";
+import { defaultSiteContent } from "@/app/content/default-content";
+import { keyToSlug } from "@/app/content/project-helpers";
+import { ProjectPageClient } from "./project-page-client";
 
-import { useParams } from "next/navigation";
-import { CasePageView } from "@/app/components/case-page-view";
-import { canonicalProjectSlug, keyToSlug, normalizeLookup, projectContentScore, sanitizeProjectKey } from "@/app/content/project-helpers";
-import { useSiteContent } from "@/app/content/use-site-content";
-import type { ProjectPageContent } from "@/app/content/types";
+export const dynamicParams = false;
 
-function resolveProjectBySlug(projects: Record<string, ProjectPageContent>, slug: string): ProjectPageContent | null {
-  const target = normalizeLookup(canonicalProjectSlug(slug));
-  const targets = new Set<string>([target]);
-  if (target === "mts") {
-    targets.add("mtc");
-  }
-  if (target === "mtc") {
-    targets.add("mts");
+export function generateStaticParams() {
+  const slugs = new Set<string>();
+
+  for (const key of Object.keys(defaultSiteContent.projects)) {
+    slugs.add(keyToSlug(key));
   }
 
-  const direct = projects[slug];
-  let bestCandidate: ProjectPageContent | null = direct ?? null;
-  for (const [key, content] of Object.entries(projects)) {
-    const byKey = normalizeLookup(key);
-    const byKebab = normalizeLookup(keyToSlug(key));
-    const byFolder = normalizeLookup(canonicalProjectSlug(sanitizeProjectKey(content.materialsFolder ?? "") || keyToSlug(key)));
-    if (targets.has(byKey) || targets.has(byKebab) || targets.has(byFolder)) {
-      if (!bestCandidate || projectContentScore(content) > projectContentScore(bestCandidate)) {
-        bestCandidate = content;
-      }
+  for (const card of defaultSiteContent.home.projects) {
+    const match = card.href?.match(/^\/projects\/([^/?#]+)/i);
+    if (match?.[1]) {
+      slugs.add(match[1].toLowerCase());
     }
   }
-  if (bestCandidate) {
-    return bestCandidate;
-  }
-  if (direct) {
-    return direct;
-  }
-  if (projects[canonicalProjectSlug(slug)]) {
-    const canonical = projects[canonicalProjectSlug(slug)];
-    if (canonical) {
-      return canonical;
-    }
-  }
-  return null;
+
+  return Array.from(slugs).map((projectKey) => ({ projectKey }));
 }
 
-export default function DynamicProjectPage() {
-  const params = useParams<{ projectKey: string }>();
-  const slug = params.projectKey ?? "";
-  const siteContent = useSiteContent();
-  const content = resolveProjectBySlug(siteContent.projects, slug);
-
-  if (!content) {
-    return (
-      <main className="miniapps-case">
-        <div className="miniapps-shell miniapps-container">
-          <p className="miniapps-text">Project not found</p>
-        </div>
-      </main>
-    );
-  }
-
-  return <CasePageView content={content} globalReferenceSiteUrl={siteContent.home.referenceSiteUrl} />;
+export default async function DynamicProjectPage({
+  params,
+}: {
+  params: Promise<{ projectKey: string }>;
+}) {
+  const { projectKey } = await params;
+  return <ProjectPageClient slug={projectKey} />;
 }
