@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lastik Site v2
 
-## Getting Started
-
-First, run the development server:
+## Local Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build/Deploy Model
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Static export: `next.config.ts` uses `output: "export"`.
+- Netlify publishes the `out/` directory (see `netlify.toml`).
+- Canonical content source is repository code (`app/content/default-content.ts` + normalization in `app/content/storage.ts`).
+- Browser `localStorage` drafts are disabled by default in both local and Netlify builds.
 
-## Learn More
+This is intentional so local preview and deployed site stay deterministic.
 
-To learn more about Next.js, take a look at the following resources:
+## Content Workflow (Stable)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Update project cards/content in repository files:
+   - `app/content/default-content.ts`
+   - `app/content/storage.ts` (normalization/fallback rules)
+2. Validate locally:
+   - `npm run build`
+3. Push to `main`.
+4. Netlify rebuilds from `main` and serves the same content as local build.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Optional Draft Mode
 
-## Deploy on Vercel
+If you intentionally want browser-local draft content, run with:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+NEXT_PUBLIC_SITE_CONTENT_SOURCE=local-storage npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Do not use this mode for release verification, because data is not versioned in git.

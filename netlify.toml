@@ -1,3 +1,6 @@
 [build]
   command = "npm run build"
   publish = "out"
+
+[build.environment]
+  NEXT_PUBLIC_SITE_CONTENT_SOURCE = "repo"
