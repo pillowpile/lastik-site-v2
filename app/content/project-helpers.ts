@@ -37,6 +37,9 @@ export function canonicalProjectSlug(raw: string): string {
   if (normalized === "vk-heo") {
     return "vk-neo";
   }
+  if (normalized === "r-o-c-s") {
+    return "rocs";
+  }
   if (normalized === "mtc") {
     return "mts";
   }
