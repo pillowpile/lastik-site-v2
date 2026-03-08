@@ -12,6 +12,7 @@ export const HERO_BY_FOLDER: Record<string, string> = {
 
 export const THUMB_BY_FOLDER: Record<string, string> = {
   eapteka: "/materials/eapteka/eapteka_thumb.webm",
+  "love-generation": "/materials/love-generation/thumb/love_generation-thumb.mp4",
   rocs: "/materials/rocs/rocs_thumb.webm",
   mts: "/materials/mts/thumb/mts-thumb.mp4",
   sobchak: "/materials/sobchak/thumb/sobchak_thumb.mp4",

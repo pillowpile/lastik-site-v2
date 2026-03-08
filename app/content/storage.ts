@@ -547,6 +547,163 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
     }
   }
 
+  // Second pass is required because placeholders are created from home cards later in this function.
+  // Without this pass, those generated project entries miss hero media, derived sections and fallback text.
+  for (const key of Object.keys(next.projects)) {
+    const folder = sanitizeProjectKey(next.projects[key].materialsFolder ?? "") || sanitizeProjectKey(keyToSlug(key));
+    next.projects[key].tags = normalizePageTags(next.projects[key].tags);
+    next.projects[key].heroVideoSrc = normalizeAssetPath(next.projects[key].heroVideoSrc, folder);
+    next.projects[key].heroPoster = normalizeAssetPath(next.projects[key].heroPoster, folder);
+    if (!next.projects[key].heroVideoSrc && HERO_BY_FOLDER[folder]) {
+      next.projects[key].heroVideoSrc = HERO_BY_FOLDER[folder];
+    }
+
+    if (normalizeLookup(key) === "eapteka") {
+      const heroSrc = next.projects[key].heroVideoSrc?.toLowerCase() ?? "";
+      if (!heroSrc || heroSrc.includes("eapteka_thumb")) {
+        next.projects[key].heroVideoSrc = "/materials/eapteka/sber_eapteka_hero.mp4";
+      }
+      if (!next.projects[key].materialsFolder) {
+        next.projects[key].materialsFolder = "eapteka";
+      }
+    }
+
+    if (normalizeLookup(key) === "lovegeneration") {
+      next.projects[key].heroVideoSrc = "/materials/love-generation/love_generation_hero.mp4";
+      if (!next.projects[key].materialsFolder) {
+        next.projects[key].materialsFolder = "love-generation";
+      }
+    }
+    if (normalizeLookup(key) === "sobchak" && !next.projects[key].heroVideoSrc) {
+      next.projects[key].heroVideoSrc = "/materials/sobchak/sobchak_hero.mp4";
+    }
+    if (normalizeLookup(key) === "mts" && !next.projects[key].heroVideoSrc) {
+      next.projects[key].heroVideoSrc = "/materials/mts/mts_hero.mp4";
+    }
+
+    if (normalizeLookup(folder).includes("zvuk")) {
+      const hasStoryboardSection = next.projects[key].sections.some(
+        (section) =>
+          normalizeLookup(section.id) === "storyboardsb" ||
+          (section.header ?? "").toLowerCase().includes("раскадровка") ||
+          (section.title ?? "").toLowerCase().includes("раскадровка")
+      );
+      if (!hasStoryboardSection) {
+        next.projects[key].sections.push({
+          id: "storyboard-sb",
+          header: "Раскадровка",
+          about: "",
+          blocks: [
+            {
+              id: "storyboard-sb-grid",
+              type: "row",
+              row: {
+                id: "storyboard-sb-items",
+                layout: "grid-3",
+                items: Array.from({ length: 27 }, (_, idx) => {
+                  const n = idx + 1;
+                  return {
+                    id: `zvuk-sb-${String(n).padStart(2, "0")}`,
+                    src: zvukStoryboardSrc(n),
+                    alt: `ZVUK storyboard ${n}`,
+                  };
+                }),
+              },
+            },
+          ],
+        });
+      }
+    }
+
+    if (normalizeLookup(folder).includes("rocs")) {
+      const hasStoryboardSection = next.projects[key].sections.some(
+        (section) =>
+          normalizeLookup(section.id) === "storyboard-rocs" ||
+          (section.header ?? "").toLowerCase().includes("раскадровка") ||
+          (section.title ?? "").toLowerCase().includes("раскадровка")
+      );
+      if (!hasStoryboardSection) {
+        next.projects[key].sections.push({
+          id: "storyboard-rocs",
+          header: "Раскадровка",
+          about: "",
+          blocks: [
+            {
+              id: "storyboard-rocs-grid",
+              type: "row",
+              row: {
+                id: "storyboard-rocs-items",
+                layout: "grid-3",
+                items: Array.from({ length: 14 }, (_, idx) => {
+                  const n = idx + 1;
+                  return {
+                    id: `rocs-sb-${String(n).padStart(2, "0")}`,
+                    src: rocsStoryboardSrc(n),
+                    alt: `R.O.C.S storyboard ${n}`,
+                  };
+                }),
+              },
+            },
+          ],
+        });
+      }
+
+      const hasSketchSection = next.projects[key].sections.some(
+        (section) =>
+          normalizeLookup(section.id) === "sketch-rocs" ||
+          (section.header ?? "").toLowerCase().includes("скетч") ||
+          (section.title ?? "").toLowerCase().includes("скетч")
+      );
+      if (!hasSketchSection) {
+        next.projects[key].sections.push({
+          id: "sketch-rocs",
+          header: "Скетчи",
+          about: "",
+          blocks: [
+            {
+              id: "sketch-rocs-grid",
+              type: "row",
+              row: {
+                id: "sketch-rocs-items",
+                layout: "grid-3",
+                items: Array.from({ length: 10 }, (_, idx) => {
+                  const n = idx + 1;
+                  return {
+                    id: `rocs-sketch-${String(n).padStart(2, "0")}`,
+                    src: rocsSketchSrc(n),
+                    alt: `R.O.C.S sketch ${n}`,
+                  };
+                }),
+              },
+            },
+          ],
+        });
+      }
+    }
+
+    if (next.projects[key].introTexts.length === 0) {
+      next.projects[key].introTexts = ["Project materials and process overview."];
+    }
+    if (next.projects[key].sections.length === 0 && THUMB_BY_FOLDER[folder]) {
+      next.projects[key].sections.push({
+        id: `${folder}-preview`,
+        header: "Preview",
+        about: "",
+        blocks: [
+          {
+            id: `${folder}-preview-row`,
+            type: "row",
+            row: {
+              id: `${folder}-preview-items`,
+              layout: "row-1",
+              items: [{ id: `${folder}-preview-item`, src: THUMB_BY_FOLDER[folder], alt: `${next.projects[key].title} preview` }],
+            },
+          },
+        ],
+      });
+    }
+  }
+
   return next;
 }
 
