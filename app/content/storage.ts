@@ -295,7 +295,7 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
     }
 
     if (normalizeLookup(key) === "lovegeneration") {
-      next.projects[key].heroVideoSrc = "/materials/love-generation/love_generation_hero.mp4";
+      next.projects[key].heroVideoSrc = "/materials/love-generation/love_generation (1080p)_1_prob4.mp4";
       if (!next.projects[key].materialsFolder) {
         next.projects[key].materialsFolder = "love-generation";
       }
@@ -400,6 +400,153 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
                     alt: `R.O.C.S sketch ${n}`,
                   };
                 }),
+              },
+            },
+          ],
+        });
+      }
+    }
+
+    if (normalizeLookup(folder).includes("uralsib")) {
+      const hasCharactersSection = next.projects[key].sections.some(
+        (section) =>
+          normalizeLookup(section.id) === "characters-uralsib" ||
+          (section.header ?? "").toLowerCase().includes("персонаж") ||
+          (section.title ?? "").toLowerCase().includes("персонаж")
+      );
+      if (!hasCharactersSection) {
+        next.projects[key].sections.push({
+          id: "characters-uralsib",
+          header: "Персонажи",
+          about: "",
+          blocks: [
+            {
+              id: "uralsib-characters-row-1",
+              type: "row",
+              row: {
+                id: "uralsib-characters-items-1",
+                layout: "row-3",
+                items: [
+                  { id: "uralsib-pers1-1", src: "/materials/uralsib/pers_sketch/pers1-1.jpg", alt: "Uralsib character sketch 1-1" },
+                  { id: "uralsib-pers1-2", src: "/materials/uralsib/pers_sketch/pers1-2.jpg", alt: "Uralsib character sketch 1-2" },
+                  { id: "uralsib-pers1-3", src: "/materials/uralsib/pers_sketch/pers1-3.jpg", alt: "Uralsib character sketch 1-3" },
+                ],
+              },
+            },
+            {
+              id: "uralsib-characters-row-2",
+              type: "row",
+              row: {
+                id: "uralsib-characters-items-2",
+                layout: "row-3",
+                items: [
+                  { id: "uralsib-pers2-1", src: "/materials/uralsib/pers_sketch/pers2-1.jpg", alt: "Uralsib character sketch 2-1" },
+                  { id: "uralsib-pers2-2", src: "/materials/uralsib/pers_sketch/pers2-2.jpg", alt: "Uralsib character sketch 2-2" },
+                  { id: "uralsib-pers2-3", src: "/materials/uralsib/pers_sketch/pers2-3.png", alt: "Uralsib character sketch 2-3" },
+                ],
+              },
+            },
+            {
+              id: "uralsib-characters-row-3",
+              type: "row",
+              row: {
+                id: "uralsib-characters-items-3",
+                layout: "row-3",
+                items: [
+                  { id: "uralsib-pers3-1", src: "/materials/uralsib/pers_sketch/pers3-1.jpg", alt: "Uralsib character sketch 3-1" },
+                  { id: "uralsib-pers3-2", src: "/materials/uralsib/pers_sketch/pers3-2.jpg", alt: "Uralsib character sketch 3-2" },
+                  { id: "uralsib-pers3-3", src: "/materials/uralsib/pers_sketch/pers3-3.jpg", alt: "Uralsib character sketch 3-3" },
+                ],
+              },
+            },
+            {
+              id: "uralsib-characters-row-4",
+              type: "row",
+              row: {
+                id: "uralsib-characters-items-4",
+                layout: "row-1",
+                items: [{ id: "uralsib-pers4", src: "/materials/uralsib/pers_sketch/pers4.jpg", alt: "Uralsib character sketch 4" }],
+              },
+            },
+          ],
+        });
+      }
+    }
+
+    if (normalizeLookup(folder).includes("sberterminal")) {
+      const hasTerminalSection = next.projects[key].sections.some(
+        (section) =>
+          normalizeLookup(section.id) === "terminal-sber" ||
+          (section.header ?? "").toLowerCase().includes("терминал") ||
+          (section.title ?? "").toLowerCase().includes("терминал")
+      );
+      if (!hasTerminalSection) {
+        next.projects[key].sections.push({
+          id: "terminal-sber",
+          header: "Терминал",
+          about: "",
+          blocks: [
+            {
+              id: "terminal-sber-grid",
+              type: "row",
+              row: {
+                id: "terminal-sber-grid-items",
+                layout: "grid-3",
+                items: [
+                  {
+                    id: "terminal-grid-1",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-06.jpg",
+                    alt: "Sber terminal grid 1",
+                  },
+                  {
+                    id: "terminal-grid-2",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-17.jpg",
+                    alt: "Sber terminal grid 2",
+                  },
+                  {
+                    id: "terminal-grid-3",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-20.jpg",
+                    alt: "Sber terminal grid 3",
+                  },
+                  {
+                    id: "terminal-grid-4",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-22.jpg",
+                    alt: "Sber terminal grid 4",
+                  },
+                  {
+                    id: "terminal-grid-5",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-23.jpg",
+                    alt: "Sber terminal grid 5",
+                  },
+                  {
+                    id: "terminal-grid-6",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-25.jpg",
+                    alt: "Sber terminal grid 6",
+                  },
+                  {
+                    id: "terminal-grid-7",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-27.jpg",
+                    alt: "Sber terminal grid 7",
+                  },
+                  {
+                    id: "terminal-grid-8",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-08-25.jpg",
+                    alt: "Sber terminal grid 8",
+                  },
+                ],
+              },
+            },
+            {
+              id: "terminal-sber-row",
+              type: "row",
+              row: {
+                id: "terminal-sber-row-items",
+                layout: "row-3",
+                items: [
+                  { id: "terminal-row-1", src: "/materials/sber-terminal/term_row1/term-2-1.jpg", alt: "Sber terminal row 1" },
+                  { id: "terminal-row-2", src: "/materials/sber-terminal/term_row1/term-2-2.jpg", alt: "Sber terminal row 2" },
+                  { id: "terminal-row-3", src: "/materials/sber-terminal/term_row1/term-2-3.jpg", alt: "Sber terminal row 3" },
+                ],
               },
             },
           ],
@@ -585,7 +732,7 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
     }
 
     if (normalizeLookup(key) === "lovegeneration") {
-      next.projects[key].heroVideoSrc = "/materials/love-generation/love_generation_hero.mp4";
+      next.projects[key].heroVideoSrc = "/materials/love-generation/love_generation (1080p)_1_prob4.mp4";
       if (!next.projects[key].materialsFolder) {
         next.projects[key].materialsFolder = "love-generation";
       }
@@ -690,6 +837,153 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
                     alt: `R.O.C.S sketch ${n}`,
                   };
                 }),
+              },
+            },
+          ],
+        });
+      }
+    }
+
+    if (normalizeLookup(folder).includes("uralsib")) {
+      const hasCharactersSection = next.projects[key].sections.some(
+        (section) =>
+          normalizeLookup(section.id) === "characters-uralsib" ||
+          (section.header ?? "").toLowerCase().includes("персонаж") ||
+          (section.title ?? "").toLowerCase().includes("персонаж")
+      );
+      if (!hasCharactersSection) {
+        next.projects[key].sections.push({
+          id: "characters-uralsib",
+          header: "Персонажи",
+          about: "",
+          blocks: [
+            {
+              id: "uralsib-characters-row-1",
+              type: "row",
+              row: {
+                id: "uralsib-characters-items-1",
+                layout: "row-3",
+                items: [
+                  { id: "uralsib-pers1-1", src: "/materials/uralsib/pers_sketch/pers1-1.jpg", alt: "Uralsib character sketch 1-1" },
+                  { id: "uralsib-pers1-2", src: "/materials/uralsib/pers_sketch/pers1-2.jpg", alt: "Uralsib character sketch 1-2" },
+                  { id: "uralsib-pers1-3", src: "/materials/uralsib/pers_sketch/pers1-3.jpg", alt: "Uralsib character sketch 1-3" },
+                ],
+              },
+            },
+            {
+              id: "uralsib-characters-row-2",
+              type: "row",
+              row: {
+                id: "uralsib-characters-items-2",
+                layout: "row-3",
+                items: [
+                  { id: "uralsib-pers2-1", src: "/materials/uralsib/pers_sketch/pers2-1.jpg", alt: "Uralsib character sketch 2-1" },
+                  { id: "uralsib-pers2-2", src: "/materials/uralsib/pers_sketch/pers2-2.jpg", alt: "Uralsib character sketch 2-2" },
+                  { id: "uralsib-pers2-3", src: "/materials/uralsib/pers_sketch/pers2-3.png", alt: "Uralsib character sketch 2-3" },
+                ],
+              },
+            },
+            {
+              id: "uralsib-characters-row-3",
+              type: "row",
+              row: {
+                id: "uralsib-characters-items-3",
+                layout: "row-3",
+                items: [
+                  { id: "uralsib-pers3-1", src: "/materials/uralsib/pers_sketch/pers3-1.jpg", alt: "Uralsib character sketch 3-1" },
+                  { id: "uralsib-pers3-2", src: "/materials/uralsib/pers_sketch/pers3-2.jpg", alt: "Uralsib character sketch 3-2" },
+                  { id: "uralsib-pers3-3", src: "/materials/uralsib/pers_sketch/pers3-3.jpg", alt: "Uralsib character sketch 3-3" },
+                ],
+              },
+            },
+            {
+              id: "uralsib-characters-row-4",
+              type: "row",
+              row: {
+                id: "uralsib-characters-items-4",
+                layout: "row-1",
+                items: [{ id: "uralsib-pers4", src: "/materials/uralsib/pers_sketch/pers4.jpg", alt: "Uralsib character sketch 4" }],
+              },
+            },
+          ],
+        });
+      }
+    }
+
+    if (normalizeLookup(folder).includes("sberterminal")) {
+      const hasTerminalSection = next.projects[key].sections.some(
+        (section) =>
+          normalizeLookup(section.id) === "terminal-sber" ||
+          (section.header ?? "").toLowerCase().includes("терминал") ||
+          (section.title ?? "").toLowerCase().includes("терминал")
+      );
+      if (!hasTerminalSection) {
+        next.projects[key].sections.push({
+          id: "terminal-sber",
+          header: "Терминал",
+          about: "",
+          blocks: [
+            {
+              id: "terminal-sber-grid",
+              type: "row",
+              row: {
+                id: "terminal-sber-grid-items",
+                layout: "grid-3",
+                items: [
+                  {
+                    id: "terminal-grid-1",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-06.jpg",
+                    alt: "Sber terminal grid 1",
+                  },
+                  {
+                    id: "terminal-grid-2",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-17.jpg",
+                    alt: "Sber terminal grid 2",
+                  },
+                  {
+                    id: "terminal-grid-3",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-20.jpg",
+                    alt: "Sber terminal grid 3",
+                  },
+                  {
+                    id: "terminal-grid-4",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-22.jpg",
+                    alt: "Sber terminal grid 4",
+                  },
+                  {
+                    id: "terminal-grid-5",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-23.jpg",
+                    alt: "Sber terminal grid 5",
+                  },
+                  {
+                    id: "terminal-grid-6",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-25.jpg",
+                    alt: "Sber terminal grid 6",
+                  },
+                  {
+                    id: "terminal-grid-7",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-27.jpg",
+                    alt: "Sber terminal grid 7",
+                  },
+                  {
+                    id: "terminal-grid-8",
+                    src: "/materials/sber-terminal/term_grid/photo_2026-03-09_15-08-25.jpg",
+                    alt: "Sber terminal grid 8",
+                  },
+                ],
+              },
+            },
+            {
+              id: "terminal-sber-row",
+              type: "row",
+              row: {
+                id: "terminal-sber-row-items",
+                layout: "row-3",
+                items: [
+                  { id: "terminal-row-1", src: "/materials/sber-terminal/term_row1/term-2-1.jpg", alt: "Sber terminal row 1" },
+                  { id: "terminal-row-2", src: "/materials/sber-terminal/term_row1/term-2-2.jpg", alt: "Sber terminal row 2" },
+                  { id: "terminal-row-3", src: "/materials/sber-terminal/term_row1/term-2-3.jpg", alt: "Sber terminal row 3" },
+                ],
               },
             },
           ],

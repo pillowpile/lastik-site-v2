@@ -14,14 +14,16 @@ const EAPTEKA_SEEDED_KEY = "lastik.editor.eapteka-seeded.v1";
 const EAPTEKA_THUMBNAIL_SRC = "/materials/eapteka/eapteka_thumb.webm";
 const HERO_BY_FOLDER: Record<string, string> = {
   eapteka: "/materials/eapteka/sber_eapteka_hero.mp4",
-  "love-generation": "/materials/love-generation/love_generation_hero.mp4",
+  "love-generation": "/materials/love-generation/love_generation (1080p)_1_prob4.mp4",
   sobchak: "/materials/sobchak/sobchak_hero.mp4",
   mts: "/materials/mts/mts_hero.mp4",
   "mail-ru": "/materials/mail-ru/mail_hero.mp4",
   rocs: "/materials/rocs/rocs_hero.mp4",
+  "sber-terminal": "/materials/sber-terminal/sber-terminal_hero.mp4",
   uralsib: "/materials/uralsib/uralsib_hero.mp4",
+  "vtb-1": "/materials/vtb-1/ВТБ финал.mp4",
   zvuk: "/materials/zvuk/zvuk_hero.mp4",
-  "yandex-incl": "/materials/yandex-incl/Баскетбол.mp4",
+  "yandex-incl": "/materials/yandex-incl/Баскетбол_hero.mp4",
 };
 const THUMB_BY_FOLDER: Record<string, string> = {
   eapteka: "/materials/eapteka/eapteka_thumb.webm",
@@ -34,9 +36,11 @@ const THUMB_BY_FOLDER: Record<string, string> = {
   "vk-miniapps": "/materials/vk-miniapps/thumb/miniapps-thumb.png",
   "vk-neo": "/materials/vk-neo/thumb/NEO_pw.mp4",
   "sber-terminal": "/materials/sber-terminal/thumb/sber-terminal-thumb.png",
+  "vtb-1": "/materials/vtb-1/thumb/vtb-1-thumb.mp4",
   "yandex-incl": "/materials/yandex-incl/thumb/ya_incl-thumb.mp4",
 };
 type MaterialsIndex = {
+  generatedAt?: string;
   folders: string[];
   byFolder: Record<string, string[]>;
 };
@@ -128,9 +132,10 @@ async function loadMaterialsIndex(): Promise<MaterialsIndex> {
       return { folders: [], byFolder: {} };
     }
     const payload = (await response.json()) as Partial<MaterialsIndex>;
+    const generatedAt = typeof payload.generatedAt === "string" ? payload.generatedAt : undefined;
     const folders = Array.isArray(payload.folders) ? payload.folders.filter((item): item is string => typeof item === "string") : [];
     const byFolder = payload.byFolder && typeof payload.byFolder === "object" ? payload.byFolder : {};
-    return { folders, byFolder: byFolder as Record<string, string[]> };
+    return { generatedAt, folders, byFolder: byFolder as Record<string, string[]> };
   } catch {
     return { folders: [], byFolder: {} };
   }
@@ -181,6 +186,19 @@ function canonicalProjectSlug(raw: string): string {
 
 function normalizeLookup(raw: string): string {
   return raw.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function resolveMaterialsFolderName(folders: string[], raw: string): string | null {
+  const target = normalizeLookup(canonicalProjectSlug(raw));
+  if (!target) {
+    return null;
+  }
+  for (const folder of folders) {
+    if (normalizeLookup(canonicalProjectSlug(folder)) === target) {
+      return folder;
+    }
+  }
+  return null;
 }
 
 function findProjectKeyByTitle(projects: SiteContent["projects"], needle: string): string | null {
@@ -558,6 +576,7 @@ export default function EditorPage() {
   const [materialsFolders, setMaterialsFolders] = useState<string[]>([]);
   const [projectMaterialsFolder, setProjectMaterialsFolder] = useState<string | null>(null);
   const [homeCardMaterials, setHomeCardMaterials] = useState<Record<string, string[]>>({});
+  const [materialsIndex, setMaterialsIndex] = useState<MaterialsIndex>({ folders: [], byFolder: {} });
   const [content, setContent] = useState<SiteContent>(initial);
   const [projectKey, setProjectKey] = useState<ProjectKey>("project-1");
   const [isHydrated, setIsHydrated] = useState(false);
@@ -580,7 +599,7 @@ export default function EditorPage() {
   const newProjectTitle = newProjectTitleInput.trim() || normalizedNewProjectKey;
   const selectedMaterialsFolderKey =
     sanitizeProjectKey(editableContent.materialsFolder ?? "") ||
-    sanitizeProjectKey(activeSpecialPageKey ?? activeProjectKey);
+    (activeSpecialPageKey ? sanitizeProjectKey(activeSpecialPageKey) : keyToSlug(activeProjectKey));
   const referenceMode =
     editableContent?.referenceStyle?.mode ??
     (editableContent?.referenceStyle?.useThisStyle
@@ -588,6 +607,42 @@ export default function EditorPage() {
         ? "random"
         : "site"
       : "default");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function refreshIndex() {
+      const nextIndex = await loadMaterialsIndex();
+      if (cancelled) {
+        return;
+      }
+      setMaterialsIndex((prev) => {
+        if (
+          prev.generatedAt === nextIndex.generatedAt &&
+          prev.folders.length === nextIndex.folders.length &&
+          prev.folders.every((folder, index) => folder === nextIndex.folders[index])
+        ) {
+          return prev;
+        }
+        return nextIndex;
+      });
+    }
+
+    void refreshIndex();
+    const intervalId = window.setInterval(() => {
+      void refreshIndex();
+    }, 2000);
+    const onFocus = () => {
+      void refreshIndex();
+    };
+    window.addEventListener("focus", onFocus);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(intervalId);
+      window.removeEventListener("focus", onFocus);
+    };
+  }, []);
 
   function getEditableDraft(next: SiteContent): ProjectPageContent {
     if (activeSpecialPageKey) {
@@ -652,29 +707,16 @@ export default function EditorPage() {
     if (!selectedMaterialsFolderKey) {
       setProjectMaterials([]);
       setProjectMaterialsFolder(null);
+      setMaterialsFolders(materialsIndex.folders);
       return;
     }
-
-    let cancelled = false;
-
-    async function loadMaterials() {
-      const payload = await loadMaterialsIndex();
-      if (!cancelled) {
-        const folder = payload.folders.find((item) => sanitizeProjectKey(item) === selectedMaterialsFolderKey) ?? null;
-        setProjectMaterials(folder ? payload.byFolder[folder] ?? [] : []);
-        setProjectMaterialsFolder(folder);
-        setMaterialsFolders(payload.folders);
-      }
-    }
-
-    void loadMaterials();
-    return () => {
-      cancelled = true;
-    };
-  }, [selectedMaterialsFolderKey]);
+    const folder = resolveMaterialsFolderName(materialsIndex.folders, selectedMaterialsFolderKey);
+    setProjectMaterials(folder ? materialsIndex.byFolder[folder] ?? [] : []);
+    setProjectMaterialsFolder(folder);
+    setMaterialsFolders(materialsIndex.folders);
+  }, [materialsIndex, selectedMaterialsFolderKey]);
 
   useEffect(() => {
-    let cancelled = false;
     const cardTargets = content.home.projects
       .map((card) => {
         const slug = hrefToProjectSlug(card.href);
@@ -686,37 +728,24 @@ export default function EditorPage() {
           return null;
         }
         const linkedProject = content.projects[key];
-        const folder = sanitizeProjectKey(linkedProject.materialsFolder ?? "") || sanitizeProjectKey(key);
+        const folder = sanitizeProjectKey(linkedProject.materialsFolder ?? "") || keyToSlug(key);
         if (!folder) {
           return null;
         }
         return { cardId: card.id, folder };
       })
       .filter((entry): entry is { cardId: string; folder: string } => Boolean(entry));
-
-    async function loadHomeCardMaterials() {
-      const byFolder: Record<string, string[]> = {};
-      const byCard: Record<string, string[]> = {};
-      const payload = await loadMaterialsIndex();
-      await Promise.all(
-        cardTargets.map(async ({ cardId, folder }) => {
-          if (!byFolder[folder]) {
-            const resolvedFolder = payload.folders.find((item) => sanitizeProjectKey(item) === folder);
-            byFolder[folder] = resolvedFolder ? payload.byFolder[resolvedFolder] ?? [] : [];
-          }
-          byCard[cardId] = byFolder[folder] ?? [];
-        })
-      );
-      if (!cancelled) {
-        setHomeCardMaterials(byCard);
+    const byFolder: Record<string, string[]> = {};
+    const byCard: Record<string, string[]> = {};
+    for (const { cardId, folder } of cardTargets) {
+      if (!byFolder[folder]) {
+        const resolvedFolder = resolveMaterialsFolderName(materialsIndex.folders, folder);
+        byFolder[folder] = resolvedFolder ? materialsIndex.byFolder[resolvedFolder] ?? [] : [];
       }
+      byCard[cardId] = byFolder[folder] ?? [];
     }
-
-    void loadHomeCardMaterials();
-    return () => {
-      cancelled = true;
-    };
-  }, [content.home.projects, content.projects]);
+    setHomeCardMaterials(byCard);
+  }, [content.home.projects, content.projects, materialsIndex]);
 
   function commit(updater: (draft: SiteContent) => void) {
     setContent((prev) => {
@@ -1093,7 +1122,7 @@ export default function EditorPage() {
                     return;
                   }
 
-                  const fromFolder = sanitizeProjectKey(editableContent.materialsFolder ?? "") || sanitizeProjectKey(fromKey);
+                  const fromFolder = sanitizeProjectKey(editableContent.materialsFolder ?? "") || keyToSlug(fromKey);
                   const toFolder = sanitizeProjectKey(toKey);
 
                   const fromSlugLookup = normalizeLookup(keyToSlug(fromKey));
@@ -1145,7 +1174,7 @@ export default function EditorPage() {
               type="button"
               onClick={async () => {
                 const payload = await loadMaterialsIndex();
-                setMaterialsFolders(payload.folders ?? []);
+                setMaterialsIndex(payload);
               }}
             >
               Refresh material folders
@@ -1226,7 +1255,7 @@ export default function EditorPage() {
                 })
               }
             >
-              <option value="">Auto ({sanitizeProjectKey(activeSpecialPageKey ?? activeProjectKey) || (activeSpecialPageKey ?? activeProjectKey)})</option>
+              <option value="">{`Auto (${activeSpecialPageKey ? sanitizeProjectKey(activeSpecialPageKey) : keyToSlug(activeProjectKey)})`}</option>
               {editableContent.materialsFolder && !materialsFolders.includes(editableContent.materialsFolder) ? (
                 <option value={editableContent.materialsFolder}>{editableContent.materialsFolder}</option>
               ) : null}
@@ -1240,6 +1269,27 @@ export default function EditorPage() {
           <p className="editor-note">
             Materials folder: {projectMaterialsFolder ? `/public/materials/${projectMaterialsFolder}` : "not found yet"}
           </p>
+          <details className="editor-item">
+            <summary>
+              Available materials ({projectMaterials.length})
+            </summary>
+            {projectMaterials.length > 0 ? (
+              <div className="editor-list">
+                {projectMaterials.map((src) => (
+                  <label key={`material-${src}`}>
+                    File
+                    <input
+                      readOnly
+                      value={src}
+                      onFocus={(e) => e.target.select()}
+                    />
+                  </label>
+                ))}
+              </div>
+            ) : (
+              <p className="editor-note">No files loaded for this materials folder.</p>
+            )}
+          </details>
 
           <div className="editor-grid-2">
             <label>
@@ -2063,6 +2113,27 @@ export default function EditorPage() {
                                         </select>
                                       </label>
                                     </div>
+                                    {(item.type ?? mediaTypeFromSrc(item.src)) === "video" ? (
+                                      <label className="editor-inline">
+                                        <input
+                                          type="checkbox"
+                                          checked={Boolean(item.soundEnabled)}
+                                          onChange={(e) =>
+                                            commit((next) => {
+                                              const nextItem = (
+                                                (getEditableDraft(next).sections[sectionIndex].blocks[
+                                                  blockIndex
+                                                ] as Extract<SectionBlock, { type: "row" }>).row.items[
+                                                  itemIndex
+                                                ] as MediaItem
+                                              );
+                                              nextItem.soundEnabled = e.target.checked;
+                                            })
+                                          }
+                                        />
+                                        Enable sound toggle
+                                      </label>
+                                    ) : null}
                                   </article>
                                 );
                               })}

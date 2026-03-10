@@ -1,11 +1,13 @@
 export const HERO_BY_FOLDER: Record<string, string> = {
   eapteka: "/materials/eapteka/sber_eapteka_hero.mp4",
-  "love-generation": "/materials/love-generation/love_generation_hero.mp4",
+  "love-generation": "/materials/love-generation/love_generation (1080p)_1_prob4.mp4",
   sobchak: "/materials/sobchak/sobchak_hero.mp4",
   mts: "/materials/mts/mts_hero.mp4",
   "mail-ru": "/materials/mail-ru/mail_hero.mp4",
   rocs: "/materials/rocs/rocs_hero.mp4",
+  "sber-terminal": "/materials/sber-terminal/sber-terminal_hero.mp4",
   uralsib: "/materials/uralsib/uralsib_hero.mp4",
+  "vtb-1": "/materials/vtb-1/ВТБ финал.mp4",
   zvuk: "/materials/zvuk/zvuk_hero.mp4",
   "yandex-incl": "/materials/yandex-incl/Баскетбол_hero.mp4",
 };
@@ -22,6 +24,7 @@ export const THUMB_BY_FOLDER: Record<string, string> = {
   "vk-miniapps": "/materials/vk-miniapps/thumb/miniapps-thumb.png",
   "vk-neo": "/materials/vk-neo/thumb/NEO_pw.mp4",
   "sber-terminal": "/materials/sber-terminal/thumb/sber-terminal-thumb.png",
+  "vtb-1": "/materials/vtb-1/thumb/vtb-1-thumb.mp4",
   "yandex-incl": "/materials/yandex-incl/thumb/ya_incl-thumb.mp4",
 };
 

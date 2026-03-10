@@ -1,12 +1,12 @@
 import { readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const rootDir = process.cwd();
-const materialsDir = path.join(rootDir, "public", "materials");
-const outputPath = path.join(rootDir, "public", "materials-index.json");
-const allowedExt = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp4", ".webm", ".mov", ".svg"]);
+export const rootDir = process.cwd();
+export const materialsDir = path.join(rootDir, "public", "materials");
+export const outputPath = path.join(rootDir, "public", "materials-index.json");
+export const allowedExt = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp4", ".webm", ".mov", ".svg"]);
 
-async function listFilesRecursive(folderName, currentPath, relative = "") {
+export async function listFilesRecursive(folderName, currentPath, relative = "") {
   const entries = await readdir(currentPath, { withFileTypes: true });
   const files = [];
 
@@ -29,7 +29,7 @@ async function listFilesRecursive(folderName, currentPath, relative = "") {
   return files;
 }
 
-async function main() {
+export async function generateMaterialsIndex() {
   let folders = [];
 
   try {
@@ -51,4 +51,4 @@ async function main() {
   await writeFile(outputPath, JSON.stringify({ generatedAt: new Date().toISOString(), folders, byFolder }, null, 2));
 }
 
-await main();
+await generateMaterialsIndex();

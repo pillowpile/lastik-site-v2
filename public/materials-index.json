@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T19:08:00.765Z",
+  "generatedAt": "2026-03-10T10:28:24.275Z",
   "folders": [
     "eapteka",
     "love-generation",
@@ -13,6 +13,7 @@
     "uralsib",
     "vk-miniapps",
     "vk-neo",
+    "vtb-1",
     "yandex-incl",
     "zvuk"
   ],
@@ -272,10 +273,24 @@
       "/materials/eapteka/thumb/eapteka_thumb81.png"
     ],
     "love-generation": [
+      "/materials/love-generation/GLOSS_backstage.mp4",
+      "/materials/love-generation/lg_sketch.png",
+      "/materials/love-generation/love_generation (1080p)_1_prob4.mp4",
       "/materials/love-generation/love_generation_hero.mp4",
+      "/materials/love-generation/PALETKA_backstage.mp4",
       "/materials/love-generation/thumb/love_generation-thumb.mp4"
     ],
     "mail-ru": [
+      "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-02.jpg",
+      "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-02.png",
+      "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-15.jpg",
+      "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-15.png",
+      "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-21.jpg",
+      "/materials/mail-ru/3d-pics/photo_2026-03-09_13-33-56.jpg",
+      "/materials/mail-ru/MAIL_anim_1_v02.mp4",
+      "/materials/mail-ru/MAIL_anim_1_v07.mp4",
+      "/materials/mail-ru/MAIL_anim_3_v02 (2).mp4",
+      "/materials/mail-ru/MAIL_anim_fin_1_v02.mp4",
       "/materials/mail-ru/mail_hero.mp4",
       "/materials/mail-ru/thumb/mail-thumb.mp4"
     ],
@@ -360,6 +375,19 @@
     ],
     "sber": [],
     "sber-terminal": [
+      "/materials/sber-terminal/no ligal+ cover + pack.mp4",
+      "/materials/sber-terminal/sber-terminal_hero.mp4",
+      "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-06.jpg",
+      "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-17.jpg",
+      "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-20.jpg",
+      "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-22.jpg",
+      "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-23.jpg",
+      "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-25.jpg",
+      "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-27.jpg",
+      "/materials/sber-terminal/term_grid/photo_2026-03-09_15-08-25.jpg",
+      "/materials/sber-terminal/term_row1/term-2-1.jpg",
+      "/materials/sber-terminal/term_row1/term-2-2.jpg",
+      "/materials/sber-terminal/term_row1/term-2-3.jpg",
       "/materials/sber-terminal/thumb/sber-terminal-thumb.png"
     ],
     "sobchak": [
@@ -384,7 +412,18 @@
       "/materials/sobchak/thumb/sobchak_thumb.mp4"
     ],
     "uralsib": [
+      "/materials/uralsib/pers_sketch/pers1-1.jpg",
+      "/materials/uralsib/pers_sketch/pers1-2.jpg",
+      "/materials/uralsib/pers_sketch/pers1-3.jpg",
+      "/materials/uralsib/pers_sketch/pers2-1.jpg",
+      "/materials/uralsib/pers_sketch/pers2-2.jpg",
+      "/materials/uralsib/pers_sketch/pers2-3.png",
+      "/materials/uralsib/pers_sketch/pers3-1.jpg",
+      "/materials/uralsib/pers_sketch/pers3-2.jpg",
+      "/materials/uralsib/pers_sketch/pers3-3.jpg",
+      "/materials/uralsib/pers_sketch/pers4.jpg",
       "/materials/uralsib/thumb/uralsib-thumb.mp4",
+      "/materials/uralsib/uralsib (1080p)_1_prob4.mp4",
       "/materials/uralsib/uralsib_hero.mp4"
     ],
     "vk-miniapps": [
@@ -488,12 +527,21 @@
       "/materials/vk-neo/thumb/NEO_pw.mp4",
       "/materials/vk-neo/unicorn.jpg"
     ],
+    "vtb-1": [
+      "/materials/vtb-1/thumb/vtb-1-thumb.mp4",
+      "/materials/vtb-1/ВТБ финал.mp4"
+    ],
     "yandex-incl": [
+      "/materials/yandex-incl/bask_sketch2.jpg",
+      "/materials/yandex-incl/bask1.gif",
       "/materials/yandex-incl/girl_sketch_pw.jpg",
+      "/materials/yandex-incl/gotov1.gif",
       "/materials/yandex-incl/sb_gorovka.jpg",
       "/materials/yandex-incl/thumb/ya_incl-thumb.mp4",
+      "/materials/yandex-incl/Баскетбол 2.mp4",
       "/materials/yandex-incl/Баскетбол_hero.mp4",
-      "/materials/yandex-incl/Готовка_hero.mp4"
+      "/materials/yandex-incl/Готовка_hero.mp4",
+      "/materials/yandex-incl/Готовка2.mp4"
     ],
     "zvuk": [
       "/materials/zvuk/sb/1.png",

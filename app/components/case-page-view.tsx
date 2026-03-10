@@ -34,14 +34,41 @@ function rowClass(row: ContentRow): string {
   }
 }
 
+function MediaFigureVideo({ item }: { item: MediaItem }) {
+  const [muted, setMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  function toggleMuted() {
+    const nextMuted = !muted;
+    setMuted(nextMuted);
+    if (videoRef.current) {
+      videoRef.current.muted = nextMuted;
+    }
+  }
+
+  return (
+    <>
+      <video ref={videoRef} autoPlay loop muted={muted} playsInline preload="metadata">
+        <source src={item.src} type={videoMimeType(item.src)} />
+      </video>
+      {item.soundEnabled ? (
+        <button
+          className="miniapps-media-sound-toggle"
+          onClick={toggleMuted}
+          type="button"
+          aria-label={muted ? "Enable video sound" : "Mute video sound"}
+        >
+          {muted ? "Sound on" : "Sound off"}
+        </button>
+      ) : null}
+    </>
+  );
+}
+
 function renderMedia(item: MediaItem) {
   const type = item.type ?? mediaTypeFromSrc(item.src);
   if (type === "video") {
-    return (
-      <video autoPlay loop muted playsInline preload="metadata">
-        <source src={item.src} type={videoMimeType(item.src)} />
-      </video>
-    );
+    return <MediaFigureVideo item={item} />;
   }
   return <img alt={item.alt} src={item.src} />;
 }

@@ -6,6 +6,7 @@ export type MediaItem = {
   alt: string;
   ar?: number;
   type?: MediaType;
+  soundEnabled?: boolean;
 };
 
 export type RowLayout = "row-1" | "row-2" | "row-3" | "grid-3";

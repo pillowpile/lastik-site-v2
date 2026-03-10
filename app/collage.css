@@ -358,15 +358,15 @@ body {
   z-index: 3;
 }
 
-.collage-card.card-key-r-o-c-s .project-tag,
-.collage-card.card-key-r-o-c-s .project-tag-link,
+.collage-card.card-key-rocs .project-tag,
+.collage-card.card-key-rocs .project-tag-link,
 .collage-card.card-key-mail-ru .project-tag,
 .collage-card.card-key-mail-ru .project-tag-link {
   left: 0;
   top: calc(100% + 6px);
 }
 
-.collage-card.card-key-r-o-c-s .media-surface,
+.collage-card.card-key-rocs .media-surface,
 .collage-card.card-key-mail-ru .media-surface,
 .collage-card.card-key-mail-ru .collage-card-link {
   border-radius: 16px;
@@ -374,16 +374,16 @@ body {
   clip-path: inset(0 round 16px);
 }
 
-.collage-card.card-key-r-o-c-s .media-placeholder,
-.collage-card.card-key-r-o-c-s .media-surface,
+.collage-card.card-key-rocs .media-placeholder,
+.collage-card.card-key-rocs .media-surface,
 .collage-card.card-key-mail-ru .media-placeholder,
 .collage-card.card-key-mail-ru .media-surface {
   --card-aspect: 1.7778;
   aspect-ratio: var(--card-aspect);
 }
 
-.collage-card.card-key-r-o-c-s .media-thumb,
-.collage-card.card-key-r-o-c-s .media-thumb-image,
+.collage-card.card-key-rocs .media-thumb,
+.collage-card.card-key-rocs .media-thumb-image,
 .collage-card.card-key-mail-ru .media-thumb,
 .collage-card.card-key-mail-ru .media-thumb-image {
   object-fit: cover;
@@ -965,6 +965,7 @@ body {
   background: #1f1740;
   overflow: hidden;
   border-radius: 0;
+  position: relative;
 }
 
 .miniapps-card img {
@@ -977,6 +978,23 @@ body {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.miniapps-media-sound-toggle {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(12, 10, 24, 0.72);
+  color: #fff;
+  padding: 8px 10px;
+  font-size: 0.72rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
 }
 
 .miniapps-grid-tall .miniapps-card img {
