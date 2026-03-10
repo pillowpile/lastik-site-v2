@@ -7,8 +7,17 @@ import type { ProjectPageContent, SiteContent } from "./types";
 export const SITE_CONTENT_KEY = "lastik.siteContent.v1";
 export const SITE_CONTENT_EVENT = "site-content-updated";
 const DEFAULT_REFERENCE_SITE_URL = "https://pp-web2.netlify.app";
-const LOCAL_STORAGE_CONTENT_ENABLED =
-  process.env.NEXT_PUBLIC_SITE_CONTENT_SOURCE === "local-storage" || process.env.NODE_ENV !== "production";
+const LOCAL_STORAGE_CONTENT_ENABLED = process.env.NEXT_PUBLIC_SITE_CONTENT_SOURCE === "local-storage";
+
+function shouldUseLocalStorageContent(): boolean {
+  if (LOCAL_STORAGE_CONTENT_ENABLED) {
+    return true;
+  }
+  if (typeof window === "undefined") {
+    return false;
+  }
+  return window.location.pathname.startsWith("/editor");
+}
 
 export function cloneDefaultContent(): SiteContent {
   return structuredClone(defaultSiteContent);
@@ -1026,7 +1035,7 @@ export function loadSiteContent(): SiteContent {
     return normalizeSiteContent(cloneDefaultContent());
   }
 
-  if (!LOCAL_STORAGE_CONTENT_ENABLED) {
+  if (!shouldUseLocalStorageContent()) {
     return normalizeSiteContent(cloneDefaultContent());
   }
 
@@ -1054,7 +1063,7 @@ export function saveSiteContent(content: SiteContent): void {
   if (typeof window === "undefined") {
     return;
   }
-  if (!LOCAL_STORAGE_CONTENT_ENABLED) {
+  if (!shouldUseLocalStorageContent()) {
     return;
   }
   window.localStorage.setItem(SITE_CONTENT_KEY, JSON.stringify(content));
