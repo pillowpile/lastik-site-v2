@@ -360,6 +360,10 @@ body {
 
 .collage-card.card-key-rocs .project-tag,
 .collage-card.card-key-rocs .project-tag-link,
+.collage-card.card-key-r-o-c-s .project-tag,
+.collage-card.card-key-r-o-c-s .project-tag-link,
+.collage-card.card-folder-rocs .project-tag,
+.collage-card.card-folder-rocs .project-tag-link,
 .collage-card.card-key-mail-ru .project-tag,
 .collage-card.card-key-mail-ru .project-tag-link {
   left: 0;
@@ -367,6 +371,8 @@ body {
 }
 
 .collage-card.card-key-rocs .media-surface,
+.collage-card.card-key-r-o-c-s .media-surface,
+.collage-card.card-folder-rocs .media-surface,
 .collage-card.card-key-mail-ru .media-surface,
 .collage-card.card-key-mail-ru .collage-card-link {
   border-radius: 16px;
@@ -376,6 +382,10 @@ body {
 
 .collage-card.card-key-rocs .media-placeholder,
 .collage-card.card-key-rocs .media-surface,
+.collage-card.card-key-r-o-c-s .media-placeholder,
+.collage-card.card-key-r-o-c-s .media-surface,
+.collage-card.card-folder-rocs .media-placeholder,
+.collage-card.card-folder-rocs .media-surface,
 .collage-card.card-key-mail-ru .media-placeholder,
 .collage-card.card-key-mail-ru .media-surface {
   --card-aspect: 1.7778;
@@ -384,6 +394,10 @@ body {
 
 .collage-card.card-key-rocs .media-thumb,
 .collage-card.card-key-rocs .media-thumb-image,
+.collage-card.card-key-r-o-c-s .media-thumb,
+.collage-card.card-key-r-o-c-s .media-thumb-image,
+.collage-card.card-folder-rocs .media-thumb,
+.collage-card.card-folder-rocs .media-thumb-image,
 .collage-card.card-key-mail-ru .media-thumb,
 .collage-card.card-key-mail-ru .media-thumb-image {
   object-fit: cover;
