@@ -1,23 +1,86 @@
 {
-  "generatedAt": "2026-03-10T10:28:24.275Z",
+  "generatedAt": "2026-03-17T15:47:32.878Z",
   "folders": [
+    "delimobil",
     "eapteka",
+    "green-idea",
+    "hospitality",
+    "i-want-to-know-everything",
     "love-generation",
     "mail-ru",
+    "mansi",
+    "mosmuseum",
     "mts",
+    "presents-fest-2024",
     "project-p6",
     "rocs",
+    "saint-spring-v3",
     "sber",
+    "sber-high-res",
     "sber-terminal",
     "sobchak",
+    "stranneyshie-horiz",
+    "supermarket-trollys-dream-v1",
+    "taxi-v2",
+    "the-skin-v1",
+    "tmp",
+    "unprincipled",
     "uralsib",
     "vk-miniapps",
     "vk-neo",
+    "volchok",
     "vtb-1",
     "yandex-incl",
-    "zvuk"
+    "zvuk",
+    "zvuk-2"
   ],
   "byFolder": {
+    "delimobil": [
+      "/materials/delimobil/delimobil_hero.mp4",
+      "/materials/delimobil/thumb/delimobil-thumb.mp4",
+      "/materials/delimobil/thumb/delimobil-thumb.webm",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_000.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_001.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_002.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_003.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_004.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_005.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_006.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_007.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_008.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_009.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_010.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_011.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_012.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_013.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_014.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_015.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_016.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_017.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_018.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_019.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_020.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_021.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_022.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_023.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_024.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_025.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_026.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_027.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_028.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_029.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_030.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_031.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_032.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_033.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_034.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_035.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_036.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_037.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_038.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_039.png",
+      "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_040.png"
+    ],
     "eapteka": [
       "/materials/eapteka/eapteka_thumb.png",
       "/materials/eapteka/eapteka_thumb.webm",
@@ -272,6 +335,18 @@
       "/materials/eapteka/thumb/eapteka_thumb80.png",
       "/materials/eapteka/thumb/eapteka_thumb81.png"
     ],
+    "green-idea": [
+      "/materials/green-idea/green-idea_hero.mp4",
+      "/materials/green-idea/thumb/green-idea-thumb.mp4"
+    ],
+    "hospitality": [
+      "/materials/hospitality/hospitality_hero.mp4",
+      "/materials/hospitality/thumb/hospitality-thumb.mp4"
+    ],
+    "i-want-to-know-everything": [
+      "/materials/i-want-to-know-everything/i-want-to-know-everything_hero.mp4",
+      "/materials/i-want-to-know-everything/thumb/i-want-to-know-everything-thumb.mp4"
+    ],
     "love-generation": [
       "/materials/love-generation/GLOSS_backstage.mp4",
       "/materials/love-generation/lg_sketch.png",
@@ -294,6 +369,14 @@
       "/materials/mail-ru/mail_hero.mp4",
       "/materials/mail-ru/thumb/mail-thumb.mp4"
     ],
+    "mansi": [
+      "/materials/mansi/mansi_hero.mp4",
+      "/materials/mansi/thumb/mansi-thumb.mp4"
+    ],
+    "mosmuseum": [
+      "/materials/mosmuseum/mosmuseum_hero.mp4",
+      "/materials/mosmuseum/thumb/mosmuseum-thumb.mp4"
+    ],
     "mts": [
       "/materials/mts/mts_hero.mp4",
       "/materials/mts/reels/Snippet_FINAL.mp4",
@@ -301,6 +384,10 @@
       "/materials/mts/reels/Общий_рилс_MASTER_version.mp4",
       "/materials/mts/reels/Рилс_Черной_FINAL.mp4",
       "/materials/mts/thumb/mts-thumb.mp4"
+    ],
+    "presents-fest-2024": [
+      "/materials/presents-fest-2024/presents-fest-2024_hero.mp4",
+      "/materials/presents-fest-2024/thumb/presents-fest-2024-thumb.mp4"
     ],
     "project-p6": [],
     "rocs": [
@@ -373,7 +460,15 @@
       "/materials/rocs/thumb/r-o-c-s- (1080p)_1_prob439.png",
       "/materials/rocs/thumb/r-o-c-s- (1080p)_1_prob440.png"
     ],
+    "saint-spring-v3": [
+      "/materials/saint-spring-v3/saint-spring-v3_hero.mp4",
+      "/materials/saint-spring-v3/thumb/saint-spring-v3-thumb.mp4"
+    ],
     "sber": [],
+    "sber-high-res": [
+      "/materials/sber-high-res/sber-high-res_hero.mp4",
+      "/materials/sber-high-res/thumb/sber-high-res-thumb.mp4"
+    ],
     "sber-terminal": [
       "/materials/sber-terminal/no ligal+ cover + pack.mp4",
       "/materials/sber-terminal/sber-terminal_hero.mp4",
@@ -410,6 +505,46 @@
       "/materials/sobchak/9 pic5.jpg",
       "/materials/sobchak/sobchak_hero.mp4",
       "/materials/sobchak/thumb/sobchak_thumb.mp4"
+    ],
+    "stranneyshie-horiz": [
+      "/materials/stranneyshie-horiz/stranneyshie-horiz_hero.mp4",
+      "/materials/stranneyshie-horiz/thumb/stranneyshie-horiz-thumb.mp4"
+    ],
+    "supermarket-trollys-dream-v1": [
+      "/materials/supermarket-trollys-dream-v1/supermarket-trollys-dream-v1_hero.mp4",
+      "/materials/supermarket-trollys-dream-v1/thumb/supermarket-trollys-dream-v1-thumb.mp4"
+    ],
+    "taxi-v2": [
+      "/materials/taxi-v2/taxi-v2_hero.mp4",
+      "/materials/taxi-v2/thumb/taxi-v2-thumb.mp4"
+    ],
+    "the-skin-v1": [
+      "/materials/the-skin-v1/the-skin-v1_hero.mp4",
+      "/materials/the-skin-v1/thumb/the-skin-v1-thumb.mp4"
+    ],
+    "tmp": [
+      "/materials/tmp/delimobil (1080p).mp4",
+      "/materials/tmp/green_idea (1080p).mp4",
+      "/materials/tmp/hospitality (1080p).mp4",
+      "/materials/tmp/how_it_all_appeared___the_mansi_way_v1 (1440p).mp4",
+      "/materials/tmp/i_want_to_know_everything (1080p).mp4",
+      "/materials/tmp/mosmuseum (1080p).mp4",
+      "/materials/tmp/Presents_Fest_2024_FHD.mp4",
+      "/materials/tmp/saint_spring_v3 (1080p).mp4",
+      "/materials/tmp/Sber_high_res.mp4",
+      "/materials/tmp/Show + Logo (1).mp4",
+      "/materials/tmp/STRANNEYSHIE_HORIZ_no_legal_16x9_low.mp4",
+      "/materials/tmp/STRANNEYSHIE_preview.mp4",
+      "/materials/tmp/supermarket_trolly's_dream_v1 (1080p).mp4",
+      "/materials/tmp/taxi_v2 (1080p).mp4",
+      "/materials/tmp/the_skin_v1 (1080p).mp4",
+      "/materials/tmp/unprincipled (2160p).mp4",
+      "/materials/tmp/volchok (1080p).mp4",
+      "/materials/tmp/zvuk 2 (1080p).mp4"
+    ],
+    "unprincipled": [
+      "/materials/unprincipled/thumb/unprincipled-thumb.mp4",
+      "/materials/unprincipled/unprincipled_hero.mp4"
     ],
     "uralsib": [
       "/materials/uralsib/pers_sketch/pers1-1.jpg",
@@ -527,8 +662,20 @@
       "/materials/vk-neo/thumb/NEO_pw.mp4",
       "/materials/vk-neo/unicorn.jpg"
     ],
+    "volchok": [
+      "/materials/volchok/thumb/volchok-thumb.mp4",
+      "/materials/volchok/volchok_hero.mp4"
+    ],
     "vtb-1": [
+      "/materials/vtb-1/sketches/1.png",
+      "/materials/vtb-1/sketches/2.png",
+      "/materials/vtb-1/sketches/3.jpeg",
+      "/materials/vtb-1/sketches/4.jpeg",
+      "/materials/vtb-1/sketches/5.jpeg",
+      "/materials/vtb-1/sketches/6.jpeg",
       "/materials/vtb-1/thumb/vtb-1-thumb.mp4",
+      "/materials/vtb-1/vtb_AI textures.mp4",
+      "/materials/vtb-1/vtb_layers_1.mp4",
       "/materials/vtb-1/ВТБ финал.mp4"
     ],
     "yandex-incl": [
@@ -585,6 +732,10 @@
       "/materials/zvuk/thumb/zvuk-thumb.mp4",
       "/materials/zvuk/zvuk_1.png",
       "/materials/zvuk/zvuk_hero.mp4"
+    ],
+    "zvuk-2": [
+      "/materials/zvuk-2/thumb/zvuk-2-thumb.mp4",
+      "/materials/zvuk-2/zvuk-2_hero.mp4"
     ]
   }
 }

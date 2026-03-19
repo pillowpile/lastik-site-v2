@@ -20,7 +20,94 @@ function getMaterialFolderSlugs(): string[] {
   }
 }
 
+function readMaterialsByFolder(): Record<string, string[]> {
+  const indexPath = path.join(process.cwd(), "public", "materials-index.json");
+  try {
+    const raw = fs.readFileSync(indexPath, "utf8");
+    const parsed = JSON.parse(raw) as { byFolder?: Record<string, unknown> };
+    const source = parsed.byFolder ?? {};
+    const next: Record<string, string[]> = {};
+    for (const [folder, value] of Object.entries(source)) {
+      if (!Array.isArray(value)) {
+        continue;
+      }
+      next[canonicalProjectSlug(folder)] = value.filter((item): item is string => typeof item === "string");
+    }
+    return next;
+  } catch {
+    return {};
+  }
+}
+
+function inferLayoutByCount(count: number): "row-1" | "row-2" | "grid-3" {
+  if (count <= 1) {
+    return "row-1";
+  }
+  if (count === 2) {
+    return "row-2";
+  }
+  return "grid-3";
+}
+
+function pickAutoHeroSrc(slug: string, project: ProjectPageContent, byFolder: Record<string, string[]>): string | undefined {
+  if (project.heroVideoSrc) {
+    return project.heroVideoSrc;
+  }
+  const folder = canonicalProjectSlug(project.materialsFolder ?? slug);
+  const all = byFolder[folder] ?? [];
+  const heroCandidate = all.find((src) => /hero\.(mp4|webm|mov)$/i.test(src));
+  if (heroCandidate) {
+    return heroCandidate;
+  }
+  return all.find((src) => /\.(mp4|webm|mov)$/i.test(src));
+}
+
+function buildAutoMaterialsSection(slug: string, project: ProjectPageContent, byFolder: Record<string, string[]>) {
+  const folder = canonicalProjectSlug(project.materialsFolder ?? slug);
+  const all = byFolder[folder] ?? [];
+  if (all.length === 0) {
+    return null;
+  }
+  const hero = (project.heroVideoSrc ?? "").toLowerCase();
+  const thumb = (THUMB_BY_FOLDER[folder] ?? "").toLowerCase();
+  const media = all
+    .filter((src) => {
+      const lower = src.toLowerCase();
+      if (lower === hero || lower === thumb) {
+        return false;
+      }
+      return /\.(mp4|webm|mov|jpg|jpeg|png|gif|avif|webp)$/i.test(lower);
+    })
+    .slice(0, 24);
+
+  if (media.length === 0) {
+    return null;
+  }
+
+  return {
+    id: `${folder}-materials`,
+    header: "Materials",
+    about: "",
+    blocks: [
+      {
+        id: `${folder}-materials-row`,
+        type: "row" as const,
+        row: {
+          id: `${folder}-materials-items`,
+          layout: inferLayoutByCount(media.length),
+          items: media.map((src, index) => ({
+            id: `${folder}-materials-${index + 1}`,
+            src,
+            alt: `${project.title} material ${index + 1}`,
+          })),
+        },
+      },
+    ],
+  };
+}
+
 function buildProjectContentBySlug(): Record<string, ProjectPageContent> {
+  const materialsByFolder = readMaterialsByFolder();
   const map: Record<string, ProjectPageContent> = {};
   for (const [projectKey, project] of Object.entries(defaultSiteContent.projects)) {
     map[keyToSlug(projectKey)] = structuredClone(project);
@@ -49,26 +136,7 @@ function buildProjectContentBySlug(): Record<string, ProjectPageContent> {
       },
       heroVideoSrc: hero,
       introTexts: ["Project materials and process overview."],
-      sections: thumb
-        ? [
-            {
-              id: `${slug}-preview`,
-              header: "Preview",
-              about: "",
-              blocks: [
-                {
-                  id: `${slug}-preview-row`,
-                  type: "row",
-                  row: {
-                    id: `${slug}-preview-items`,
-                    layout: "row-1",
-                    items: [{ id: `${slug}-preview-media`, src: thumb, alt: `${card.title} preview` }],
-                  },
-                },
-              ],
-            },
-          ]
-        : [],
+      sections: [],
       thanksText: "",
     };
   }
@@ -85,27 +153,9 @@ function buildProjectContentBySlug(): Record<string, ProjectPageContent> {
     if (!project.heroVideoSrc && HERO_BY_FOLDER[folder]) {
       project.heroVideoSrc = HERO_BY_FOLDER[folder];
     }
-    if ((!project.sections || project.sections.length === 0) && THUMB_BY_FOLDER[folder]) {
-      project.sections = [
-        {
-          id: `${folder}-preview`,
-          header: "Preview",
-          about: "",
-          blocks: [
-            {
-              id: `${folder}-preview-row`,
-              type: "row",
-              row: {
-                id: `${folder}-preview-items`,
-                layout: "row-1",
-                items: [{ id: `${folder}-preview-media`, src: THUMB_BY_FOLDER[folder], alt: `${project.title} preview` }],
-              },
-            },
-          ],
-        },
-      ];
+    if (!project.heroVideoSrc) {
+      project.heroVideoSrc = pickAutoHeroSrc(slug, project, materialsByFolder);
     }
-
     if (normalizeLookup(folder).includes("zvuk") && project.sections.length < 2) {
       project.sections.push({
         id: "storyboard-sb",
@@ -299,6 +349,12 @@ function buildProjectContentBySlug(): Record<string, ProjectPageContent> {
             },
           ],
         });
+      }
+    }
+    if (project.sections.length === 0) {
+      const autoSection = buildAutoMaterialsSection(slug, project, materialsByFolder);
+      if (autoSection) {
+        project.sections.push(autoSection);
       }
     }
   }

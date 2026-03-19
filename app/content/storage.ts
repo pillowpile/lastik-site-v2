@@ -3,12 +3,16 @@
 import { defaultSiteContent } from "./default-content";
 import { HERO_BY_FOLDER, THUMB_BY_FOLDER, canonicalProjectSlug, keyToSlug, normalizeAssetPath, normalizeLookup, projectContentScore, sanitizeProjectKey } from "./project-helpers";
 import type { ProjectPageContent, SiteContent } from "./types";
+import recoveredProjectsData from "./recovered-projects.json";
+import materialsIndexData from "../../public/materials-index.json";
 
 export const SITE_CONTENT_KEY = "lastik.siteContent.v1";
 export const SITE_CONTENT_EVENT = "site-content-updated";
 const DEFAULT_REFERENCE_SITE_URL = "https://pp-web2.netlify.app";
+const IS_LOCAL_BROWSER =
+  typeof window !== "undefined" && /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
 const LOCAL_STORAGE_CONTENT_ENABLED =
-  process.env.NEXT_PUBLIC_SITE_CONTENT_SOURCE === "local-storage" || process.env.NODE_ENV !== "production";
+  process.env.NEXT_PUBLIC_SITE_CONTENT_SOURCE === "local-storage" || process.env.NODE_ENV !== "production" || IS_LOCAL_BROWSER;
 
 export function cloneDefaultContent(): SiteContent {
   return structuredClone(defaultSiteContent);
@@ -29,10 +33,58 @@ const HOME_CARD_SLUG_BY_ID: Record<string, string> = {
   p10: "love-generation",
   p11: "eapteka",
   p12: "yandex-incl",
+  p13: "volchok",
+  p14: "presents-fest-2024",
+  p15: "delimobil",
+  p16: "i-want-to-know-everything",
+  p17: "mansi",
+  p18: "stranneyshie-horiz",
+  p19: "hospitality",
+  p20: "sber-high-res",
+  p21: "unprincipled",
+  p22: "green-idea",
+  p23: "mosmuseum",
+  p24: "vtb-1",
+  p25: "supermarket-trollys-dream-v1",
+  p26: "taxi-v2",
+  p27: "the-skin-v1",
+  p28: "saint-spring-v3",
+  p29: "zvuk-2",
 };
 const HOME_CARD_TITLE_BY_ID: Record<string, string> = {
   p1: "VK / NEO",
+  p17: "MANSI",
 };
+const HOME_SHAPES = new Set(["landscape", "portrait", "tall", "square"]);
+const MATERIALS_BY_FOLDER: Record<string, string[]> = Object.fromEntries(
+  Object.entries((materialsIndexData as { byFolder?: Record<string, unknown> }).byFolder ?? {}).map(([folder, files]) => [
+    canonicalProjectSlug(folder),
+    Array.isArray(files) ? files.filter((item): item is string => typeof item === "string") : [],
+  ])
+);
+
+function normalizeHomeShape(shape: unknown): "landscape" | "portrait" | "tall" | "square" {
+  if (typeof shape === "string" && HOME_SHAPES.has(shape)) {
+    return shape as "landscape" | "portrait" | "tall" | "square";
+  }
+  return "landscape";
+}
+
+function buildDefaultHomeRows(projectIds: string[]): Array<{ id: string; projectIds: string[] }> {
+  const rows: Array<{ id: string; projectIds: string[] }> = [];
+  let offset = 0;
+  let rowIndex = 1;
+  while (offset < projectIds.length) {
+    const size = rowIndex % 3 === 1 ? 2 : rowIndex % 3 === 2 ? 3 : 1;
+    rows.push({
+      id: `r${rowIndex}`,
+      projectIds: projectIds.slice(offset, offset + size),
+    });
+    offset += size;
+    rowIndex += 1;
+  }
+  return rows;
+}
 
 function zvukStoryboardSrc(index: number): string {
   return index === 4 || index === 7 ? `/materials/zvuk/sb/${index}.jpg` : `/materials/zvuk/sb/${index}.png`;
@@ -113,6 +165,219 @@ function createProjectPlaceholder(projectKey: string, title: string): ProjectPag
     sections: [],
     thanksText: "",
   };
+}
+
+function inferLayoutByCount(count: number): "row-1" | "row-2" | "grid-3" {
+  if (count <= 1) {
+    return "row-1";
+  }
+  if (count === 2) {
+    return "row-2";
+  }
+  return "grid-3";
+}
+
+function pickAutoHeroSrc(slug: string, project: ProjectPageContent): string | undefined {
+  if (project.heroVideoSrc) {
+    return project.heroVideoSrc;
+  }
+  const folder = canonicalProjectSlug(project.materialsFolder ?? slug);
+  const all = MATERIALS_BY_FOLDER[folder] ?? [];
+  const heroCandidate = all.find((src) => /hero\.(mp4|webm|mov)$/i.test(src));
+  if (heroCandidate) {
+    return heroCandidate;
+  }
+  return all.find((src) => /\.(mp4|webm|mov)$/i.test(src));
+}
+
+function formatAutoSectionHeader(group: string): string {
+  if (group === "materials") {
+    return "Materials";
+  }
+  return group
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function buildAutoMaterialsSections(slug: string, project: ProjectPageContent) {
+  const folder = canonicalProjectSlug(project.materialsFolder ?? slug);
+  const all = MATERIALS_BY_FOLDER[folder] ?? [];
+  if (all.length === 0) {
+    return [];
+  }
+  const hero = (project.heroVideoSrc ?? "").toLowerCase();
+  const thumb = (THUMB_BY_FOLDER[folder] ?? "").toLowerCase();
+  const media = all.filter((src) => {
+    const lower = src.toLowerCase();
+    if (lower === hero || lower === thumb) {
+      return false;
+    }
+    return /\.(mp4|webm|mov|jpg|jpeg|png|gif|avif|webp)$/i.test(lower);
+  });
+  if (media.length === 0) {
+    return [];
+  }
+
+  const prefix = `/materials/${folder}/`;
+  const grouped = new Map<string, string[]>();
+  for (const src of media) {
+    const normalized = src.replace(/^\.\//, "/");
+    const relative = normalized.startsWith(prefix) ? normalized.slice(prefix.length) : "";
+    const firstSegment = relative.includes("/") ? relative.slice(0, relative.indexOf("/")) : "";
+    const group = firstSegment ? canonicalProjectSlug(firstSegment) : "materials";
+    if (!grouped.has(group)) {
+      grouped.set(group, []);
+    }
+    grouped.get(group)?.push(src);
+  }
+
+  const sections: Array<{
+    id: string;
+    header: string;
+    about: string;
+    blocks: Array<{
+      id: string;
+      type: "row";
+      row: {
+        id: string;
+        layout: "row-1" | "row-2" | "grid-3";
+        items: Array<{ id: string; src: string; alt: string }>;
+      };
+    }>;
+  }> = [];
+
+  for (const [group, items] of grouped.entries()) {
+    const sectionId = `${folder}-${group}`;
+    const blocks = [];
+    for (let offset = 0; offset < items.length; offset += 24) {
+      const chunkIndex = Math.floor(offset / 24) + 1;
+      const chunk = items.slice(offset, offset + 24);
+      blocks.push({
+        id: `${sectionId}-row-${chunkIndex}`,
+        type: "row" as const,
+        row: {
+          id: `${sectionId}-items-${chunkIndex}`,
+          layout: inferLayoutByCount(chunk.length),
+          items: chunk.map((src, index) => ({
+            id: `${sectionId}-${offset + index + 1}`,
+            src,
+            alt: `${project.title} material ${offset + index + 1}`,
+          })),
+        },
+      });
+    }
+    if (blocks.length > 0) {
+      sections.push({
+        id: sectionId,
+        header: formatAutoSectionHeader(group),
+        about: "",
+        blocks,
+      });
+    }
+  }
+
+  return sections;
+}
+
+function applyRecoveredProjects(content: SiteContent): void {
+  const recovered = (recoveredProjectsData as { projects?: Record<string, ProjectPageContent> }).projects ?? {};
+  const disallowed = new Set(["tmp", "project-p6"]);
+  for (const [slugRaw, value] of Object.entries(recovered)) {
+    const slug = canonicalProjectSlug(slugRaw);
+    if (!slug || disallowed.has(slug)) {
+      continue;
+    }
+    const normalized = structuredClone(value);
+    if ((normalized.heroVideoSrc as unknown) === "$undefined") {
+      normalized.heroVideoSrc = undefined;
+    }
+    normalized.materialsFolder = canonicalProjectSlug(normalized.materialsFolder ?? slug);
+
+    const existingKey = resolveProjectKeyBySlug(content.projects, slug);
+    const targetKey = existingKey ?? slug;
+    const existing = content.projects[targetKey];
+    if (!existing || projectContentScore(normalized) > projectContentScore(existing)) {
+      content.projects[targetKey] = normalized;
+    }
+  }
+}
+
+function hasOnlyPreviewSection(project: ProjectPageContent): boolean {
+  if (project.sections.length !== 1) {
+    return false;
+  }
+  const first = project.sections[0];
+  const id = normalizeLookup(first.id ?? "");
+  const title = normalizeLookup(first.title ?? "");
+  const header = normalizeLookup(first.header ?? "");
+  return id.includes("preview") || title.includes("preview") || header.includes("preview");
+}
+
+function dedupeProjectSections(project: ProjectPageContent): void {
+  const seenSections = new Set<string>();
+  const nextSections: ProjectPageContent["sections"] = [];
+
+  for (const section of project.sections) {
+    const sectionKey = normalizeLookup(section.id || section.header || section.title || "");
+    if (sectionKey && seenSections.has(sectionKey)) {
+      continue;
+    }
+    if (sectionKey) {
+      seenSections.add(sectionKey);
+    }
+
+    const seenBlocks = new Set<string>();
+    const nextBlocks = [];
+
+    for (const block of section.blocks) {
+      const blockKey = normalizeLookup(block.id || "");
+      if (blockKey && seenBlocks.has(blockKey)) {
+        continue;
+      }
+      if (blockKey) {
+        seenBlocks.add(blockKey);
+      }
+
+      if (block.type === "row") {
+        const seenItems = new Set<string>();
+        block.row.items = block.row.items.filter((item) => {
+          const itemKey = normalizeLookup(item.id || item.src || "");
+          if (!itemKey) {
+            return true;
+          }
+          if (seenItems.has(itemKey)) {
+            return false;
+          }
+          seenItems.add(itemKey);
+          return true;
+        });
+      }
+
+      nextBlocks.push(block);
+    }
+
+    section.blocks = nextBlocks;
+    nextSections.push(section);
+  }
+
+  project.sections = nextSections;
+}
+
+function isClearlyCrosswiredProject(project: ProjectPageContent, expectedSlug: string): boolean {
+  const folder = sanitizeProjectKey(project.materialsFolder ?? "");
+  const title = (project.title ?? "").toLowerCase();
+  const hero = (project.heroVideoSrc ?? "").toLowerCase();
+  if (expectedSlug === "yandex-incl") {
+    return false;
+  }
+  const yandexSignals =
+    title.includes("яндекс") ||
+    title.includes("шедеврум") ||
+    folder === "yandex-incl" ||
+    hero.includes("/materials/yandex-incl/");
+  return yandexSignals;
 }
 
 function normalizePageTags(tags: unknown): ProjectPageContent["tags"] {
@@ -196,6 +461,7 @@ function findProjectAliasKeyBySlug(projects: SiteContent["projects"], slug: stri
 
 function ensureRequiredProjects(content: SiteContent): SiteContent {
   const next = structuredClone(content);
+  applyRecoveredProjects(next);
   if (!next.specialPages || typeof next.specialPages !== "object") {
     next.specialPages = structuredClone(defaultSiteContent.specialPages);
   }
@@ -215,6 +481,8 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
   const defaultRocsCard = defaultSiteContent.home.projects.find((card) => normalizeLookup(card.title) === "rocs");
   const defaultUralsibCard = defaultSiteContent.home.projects.find((card) => card.title.toLowerCase() === "уралсиб");
   const defaultYandexCard = defaultSiteContent.home.projects.find((card) => card.href === "/projects/yandex-incl");
+  const defaultDelimobilCard = defaultSiteContent.home.projects.find((card) => card.href === "/projects/delimobil");
+  const defaultVolchokCard = defaultSiteContent.home.projects.find((card) => card.href === "/projects/volchok");
 
   const eaptekaByFolder = findProjectKeyByMaterialsFolder(next.projects, "eapteka");
   const eaptekaByTitle = findProjectKeyByTitle(next.projects, "eapteka") ?? findProjectKeyByTitle(next.projects, "аптека");
@@ -230,6 +498,16 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
   if (defaultEapteka && !next.projects.eapteka) {
     next.projects.eapteka = structuredClone(defaultEapteka);
   }
+  if (!next.projects.delimobil) {
+    next.projects.delimobil = createProjectPlaceholder("delimobil", defaultDelimobilCard?.title ?? "DELIMOBIL");
+  }
+  next.projects.delimobil.materialsFolder = "delimobil";
+  next.projects.delimobil.heroVideoSrc = HERO_BY_FOLDER.delimobil;
+  if (!next.projects.volchok) {
+    next.projects.volchok = createProjectPlaceholder("volchok", defaultVolchokCard?.title ?? "VOLCHOK");
+  }
+  next.projects.volchok.materialsFolder = "volchok";
+  next.projects.volchok.heroVideoSrc = HERO_BY_FOLDER.volchok;
 
   const eaptekaFallbackKey =
     (eaptekaByFolder && eaptekaByFolder !== "eapteka" ? eaptekaByFolder : null) ??
@@ -283,6 +561,9 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
     if (!next.projects[key].heroVideoSrc && HERO_BY_FOLDER[folder]) {
       next.projects[key].heroVideoSrc = HERO_BY_FOLDER[folder];
     }
+    if (!next.projects[key].heroVideoSrc) {
+      next.projects[key].heroVideoSrc = pickAutoHeroSrc(folder, next.projects[key]);
+    }
 
     if (normalizeLookup(key) === "eapteka") {
       const heroSrc = next.projects[key].heroVideoSrc?.toLowerCase() ?? "";
@@ -298,6 +579,12 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
       next.projects[key].heroVideoSrc = "/materials/love-generation/love_generation (1080p)_1_prob4.mp4";
       if (!next.projects[key].materialsFolder) {
         next.projects[key].materialsFolder = "love-generation";
+      }
+    }
+    if (normalizeLookup(key) === "mansi") {
+      next.projects[key].title = "MANSI";
+      if (!next.projects[key].materialsFolder) {
+        next.projects[key].materialsFolder = "mansi";
       }
     }
     if (normalizeLookup(key) === "sobchak" && !next.projects[key].heroVideoSrc) {
@@ -572,11 +859,12 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
 
   if (defaultEaptekaCard) {
     const normalizedCards = next.home.projects.map((card) => {
+      const safeShape = normalizeHomeShape((card as { shape?: unknown }).shape);
       const forcedSlug = HOME_CARD_SLUG_BY_ID[card.id];
       const projectSlug = hrefToProjectSlug(card.href);
       const titleFallbackSlug =
         canonicalProjectSlug(card.title) || canonicalProjectSlug(card.id) || canonicalProjectSlug(card.href ?? "");
-      const effectiveSlug = projectSlug || forcedSlug || titleFallbackSlug;
+      const effectiveSlug = forcedSlug || projectSlug || titleFallbackSlug;
       let resolvedKey = effectiveSlug ? resolveProjectKeyBySlug(next.projects, effectiveSlug) : null;
       if (effectiveSlug && !resolvedKey) {
         next.projects[effectiveSlug] = createProjectPlaceholder(effectiveSlug, card.title);
@@ -610,6 +898,7 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
       if (defaultRocsCard && (card.id === defaultRocsCard.id || normalizeLookup(card.title) === normalizeLookup(defaultRocsCard.title))) {
         return {
           ...card,
+          shape: safeShape,
           thumbnailSrc: normalizedThumb || defaultRocsCard.thumbnailSrc,
           ...(canonicalHref ? { href: canonicalHref } : {}),
         };
@@ -617,6 +906,7 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
       if (card.id === "p5" || card.title.toLowerCase().includes("собчак")) {
         return {
           ...card,
+          shape: safeShape,
           ...(normalizedThumb || THUMB_BY_FOLDER.sobchak ? { thumbnailSrc: normalizedThumb || THUMB_BY_FOLDER.sobchak } : {}),
           href: "/projects/sobchak",
         };
@@ -628,12 +918,26 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
       ) {
         return {
           ...card,
+          shape: safeShape,
           ...(normalizedThumb || THUMB_BY_FOLDER.uralsib ? { thumbnailSrc: normalizedThumb || THUMB_BY_FOLDER.uralsib } : {}),
           href: "/projects/uralsib",
         };
       }
+      if (
+        card.id === "p15" ||
+        normalizeLookup(card.title).includes("delimobil") ||
+        normalizeLookup(projectSlug ?? "") === "delimobil"
+      ) {
+        return {
+          ...card,
+          shape: safeShape,
+          ...(THUMB_BY_FOLDER.delimobil || normalizedThumb ? { thumbnailSrc: THUMB_BY_FOLDER.delimobil || normalizedThumb } : {}),
+          href: "/projects/delimobil",
+        };
+      }
       return {
         ...card,
+        shape: safeShape,
         ...(HOME_CARD_TITLE_BY_ID[card.id] ? { title: HOME_CARD_TITLE_BY_ID[card.id] } : {}),
         ...(shouldNormalizeNeoTitle ? { title: "VK / NEO" } : {}),
         ...(normalizedThumb || fallbackThumb ? { thumbnailSrc: normalizedThumb || fallbackThumb } : {}),
@@ -642,9 +946,21 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
     });
 
     const deduped: typeof normalizedCards = [];
+    const idToIndex = new Map<string, number>();
     const hrefToIndex = new Map<string, number>();
     for (const card of normalizedCards) {
+      const existingIdIndex = idToIndex.get(card.id);
+      if (existingIdIndex !== undefined) {
+        const existing = deduped[existingIdIndex];
+        deduped[existingIdIndex] = {
+          ...existing,
+          ...(existing.href ? {} : card.href ? { href: card.href } : {}),
+          ...(existing.thumbnailSrc ? {} : card.thumbnailSrc ? { thumbnailSrc: card.thumbnailSrc } : {}),
+        };
+        continue;
+      }
       if (!card.href?.startsWith("/projects/")) {
+        idToIndex.set(card.id, deduped.length);
         deduped.push(card);
         continue;
       }
@@ -659,10 +975,22 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
         }
         continue;
       }
+      idToIndex.set(card.id, deduped.length);
       hrefToIndex.set(card.href, deduped.length);
       deduped.push(card);
     }
     next.home.projects = deduped;
+
+    // Keep localStorage content in sync with newly added default cards.
+    for (const defaultCard of defaultSiteContent.home.projects) {
+      const hasById = next.home.projects.some((card) => card.id === defaultCard.id);
+      const hasByHref = defaultCard.href
+        ? next.home.projects.some((card) => card.href === defaultCard.href)
+        : false;
+      if (!hasById && !hasByHref) {
+        next.home.projects.push(structuredClone(defaultCard));
+      }
+    }
 
     const hasCard = next.home.projects.some((card) => card.href === "/projects/eapteka");
     if (!hasCard) {
@@ -690,6 +1018,123 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
         next.home.projects.push(structuredClone(defaultYandexCard));
       }
     }
+    if (defaultDelimobilCard) {
+      const hasDelimobil = next.home.projects.some((card) => hrefToProjectSlug(card.href) === "delimobil");
+      if (!hasDelimobil) {
+        next.home.projects.push(structuredClone(defaultDelimobilCard));
+      }
+    }
+    if (defaultVolchokCard) {
+      const hasVolchok = next.home.projects.some((card) => hrefToProjectSlug(card.href) === "volchok");
+      if (!hasVolchok) {
+        next.home.projects.push(structuredClone(defaultVolchokCard));
+      }
+    }
+
+    const finalDeduped: typeof next.home.projects = [];
+    const finalIdToIndex = new Map<string, number>();
+    const finalHrefToIndex = new Map<string, number>();
+    for (const card of next.home.projects) {
+      const existingById = finalIdToIndex.get(card.id);
+      if (existingById !== undefined) {
+        const existing = finalDeduped[existingById];
+        finalDeduped[existingById] = {
+          ...existing,
+          ...(existing.href ? {} : card.href ? { href: card.href } : {}),
+          ...(existing.thumbnailSrc ? {} : card.thumbnailSrc ? { thumbnailSrc: card.thumbnailSrc } : {}),
+        };
+        continue;
+      }
+      const hrefKey = card.href?.startsWith("/projects/") ? card.href : null;
+      if (hrefKey) {
+        const existingByHref = finalHrefToIndex.get(hrefKey);
+        if (existingByHref !== undefined) {
+          const existing = finalDeduped[existingByHref];
+          finalDeduped[existingByHref] = {
+            ...existing,
+            ...(existing.thumbnailSrc ? {} : card.thumbnailSrc ? { thumbnailSrc: card.thumbnailSrc } : {}),
+          };
+          continue;
+        }
+      }
+      finalIdToIndex.set(card.id, finalDeduped.length);
+      if (hrefKey) {
+        finalHrefToIndex.set(hrefKey, finalDeduped.length);
+      }
+      finalDeduped.push(card);
+    }
+    next.home.projects = finalDeduped;
+
+    for (const card of next.home.projects) {
+      const slug = hrefToProjectSlug(card.href);
+      if (!slug) {
+        continue;
+      }
+      const hasProject = Boolean(resolveProjectKeyBySlug(next.projects, slug));
+      if (!hasProject) {
+        next.projects[slug] = createProjectPlaceholder(slug, card.title);
+      }
+    }
+
+    const forcedEntries = Object.entries(HOME_CARD_SLUG_BY_ID);
+    for (const [cardId, forcedSlug] of forcedEntries) {
+      const card = next.home.projects.find((item) => item.id === cardId);
+      if (!card) {
+        continue;
+      }
+      card.href = `/projects/${forcedSlug}`;
+      if (!card.thumbnailSrc && THUMB_BY_FOLDER[forcedSlug]) {
+        card.thumbnailSrc = THUMB_BY_FOLDER[forcedSlug];
+      }
+
+      const resolvedKey = resolveProjectKeyBySlug(next.projects, forcedSlug);
+      if (!resolvedKey) {
+        if (forcedSlug === "vk-miniapps") {
+          next.projects.vkMiniApps = createProjectPlaceholder(forcedSlug, card.title);
+        } else {
+          next.projects[forcedSlug] = createProjectPlaceholder(forcedSlug, card.title);
+        }
+      } else if (resolvedKey !== forcedSlug) {
+        const isVkMiniAppsAlias = forcedSlug === "vk-miniapps" && resolvedKey === "vkMiniApps";
+        if (!isVkMiniAppsAlias) {
+          const current = next.projects[forcedSlug];
+          const candidate = next.projects[resolvedKey];
+          const currentScore = current ? projectContentScore(current) : -1;
+          const candidateScore = candidate ? projectContentScore(candidate) : -1;
+          // Prefer the richest project data for canonical slug keys in editor/content storage.
+          if (candidate && (!current || isProjectPlaceholder(current) || candidateScore > currentScore)) {
+            next.projects[forcedSlug] = candidate;
+          }
+          if (resolvedKey !== forcedSlug) {
+            delete next.projects[resolvedKey];
+          }
+        }
+      }
+
+      const project = next.projects[forcedSlug] ?? (forcedSlug === "vk-miniapps" ? next.projects.vkMiniApps : undefined);
+      if (!project) {
+        continue;
+      }
+      project.materialsFolder = forcedSlug;
+      if (!project.heroVideoSrc && HERO_BY_FOLDER[forcedSlug]) {
+        project.heroVideoSrc = HERO_BY_FOLDER[forcedSlug];
+      }
+
+      if (isClearlyCrosswiredProject(project, forcedSlug)) {
+        const recovered = createProjectPlaceholder(forcedSlug, card.title);
+        recovered.materialsFolder = forcedSlug;
+        recovered.heroVideoSrc = HERO_BY_FOLDER[forcedSlug];
+        next.projects[forcedSlug] = recovered;
+      }
+    }
+    if (next.projects.delimobil) {
+      next.projects.delimobil.materialsFolder = "delimobil";
+      next.projects.delimobil.heroVideoSrc = HERO_BY_FOLDER.delimobil;
+    }
+    if (next.projects.volchok) {
+      next.projects.volchok.materialsFolder = "volchok";
+      next.projects.volchok.heroVideoSrc = HERO_BY_FOLDER.volchok;
+    }
 
     const eaptekaIndex = next.home.projects.findIndex((card) => card.href === "/projects/eapteka");
     const mtsIndex = next.home.projects.findIndex(
@@ -709,6 +1154,48 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
       delete eaptekaCard.layout;
     }
   }
+
+  next.home.projects = next.home.projects.map((card) => ({
+    ...card,
+    shape: normalizeHomeShape((card as { shape?: unknown }).shape),
+  }));
+  if (typeof next.home.heroTitle !== "string" || !next.home.heroTitle.trim()) {
+    next.home.heroTitle = defaultSiteContent.home.heroTitle;
+  }
+  if (typeof next.home.mottoText !== "string") {
+    next.home.mottoText = defaultSiteContent.home.mottoText ?? "";
+  }
+  if (typeof next.home.footerText !== "string" || !next.home.footerText.trim()) {
+    next.home.footerText = defaultSiteContent.home.footerText;
+  }
+
+  const cardIdSet = new Set(next.home.projects.map((card) => card.id));
+  const rawRows = Array.isArray(next.home.rows) ? next.home.rows : [];
+  const normalizedRows = rawRows
+    .map((row, idx) => {
+      const id = typeof row?.id === "string" && row.id.trim() ? row.id : `r${idx + 1}`;
+      const projectIds = Array.isArray(row?.projectIds)
+        ? row.projectIds.filter((projectId): projectId is string => typeof projectId === "string" && cardIdSet.has(projectId)).slice(0, 3)
+        : [];
+      return { id, projectIds };
+    })
+    .filter((row) => row.projectIds.length > 0);
+  next.home.rows = normalizedRows.length > 0 ? normalizedRows : buildDefaultHomeRows(next.home.projects.map((card) => card.id));
+
+  const rawStickers = Array.isArray(next.home.stickers) ? next.home.stickers : [];
+  const normalizedStickers = rawStickers
+    .map((sticker, idx) => {
+      if (!sticker || typeof sticker !== "object" || typeof sticker.src !== "string" || !sticker.src.trim()) {
+        return null;
+      }
+      const id = typeof sticker.id === "string" && sticker.id.trim() ? sticker.id : `s${idx + 1}`;
+      const alt = typeof sticker.alt === "string" ? sticker.alt : "";
+      return { id, src: sticker.src.trim(), alt };
+    })
+    .filter((item): item is { id: string; src: string; alt: string } => Boolean(item));
+  next.home.stickers = normalizedStickers.length > 0
+    ? normalizedStickers
+    : structuredClone(defaultSiteContent.home.stickers ?? []);
 
   // Second pass is required because placeholders are created from home cards later in this function.
   // Without this pass, those generated project entries miss hero media, derived sections and fallback text.
@@ -735,6 +1222,12 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
       next.projects[key].heroVideoSrc = "/materials/love-generation/love_generation (1080p)_1_prob4.mp4";
       if (!next.projects[key].materialsFolder) {
         next.projects[key].materialsFolder = "love-generation";
+      }
+    }
+    if (normalizeLookup(key) === "mansi") {
+      next.projects[key].title = "MANSI";
+      if (!next.projects[key].materialsFolder) {
+        next.projects[key].materialsFolder = "mansi";
       }
     }
     if (normalizeLookup(key) === "sobchak" && !next.projects[key].heroVideoSrc) {
@@ -1012,6 +1505,21 @@ function ensureRequiredProjects(content: SiteContent): SiteContent {
         ],
       });
     }
+    if (next.projects[key].sections.length === 0 || hasOnlyPreviewSection(next.projects[key])) {
+      const autoSections = buildAutoMaterialsSections(folder, next.projects[key]);
+      if (autoSections.length > 0) {
+        for (const autoSection of autoSections) {
+          const exists = next.projects[key].sections.some((section) => normalizeLookup(section.id) === normalizeLookup(autoSection.id));
+          if (!exists) {
+            next.projects[key].sections.push(autoSection);
+          }
+        }
+      }
+    }
+  }
+
+  for (const project of Object.values(next.projects)) {
+    dedupeProjectSections(project);
   }
 
   return next;

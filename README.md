@@ -12,6 +12,7 @@ Open `http://localhost:3000`.
 
 - Static export: `next.config.ts` uses `output: "export"`.
 - Netlify publishes the `out/` directory (see `netlify.toml`).
+- `npm run build` prunes `out/materials` to only files referenced in generated pages.
 - Canonical content source is repository code (`app/content/default-content.ts` + normalization in `app/content/storage.ts`).
 - Browser `localStorage` drafts are disabled by default in both local and Netlify builds.
 

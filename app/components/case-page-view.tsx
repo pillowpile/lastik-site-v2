@@ -20,6 +20,15 @@ function mediaTypeFromSrc(src: string): "video" | "image" {
   return "image";
 }
 
+function isAlphaLikeMedia(item: MediaItem): boolean {
+  const type = item.type ?? mediaTypeFromSrc(item.src);
+  if (type !== "image") {
+    return false;
+  }
+  const lower = item.src.toLowerCase();
+  return lower.endsWith(".png") || lower.endsWith(".webp") || lower.endsWith(".avif") || lower.endsWith(".gif") || lower.includes("alpha");
+}
+
 function rowClass(row: ContentRow): string {
   const layout = row.layout;
   switch (layout) {
@@ -91,7 +100,11 @@ function renderBlock(block: SectionBlock) {
   return (
     <div className={classNames}>
       {row.items.map((item) => (
-        <figure className="miniapps-card" key={item.id} style={item.ar ? ({ "--ar": item.ar } as CSSProperties) : undefined}>
+        <figure
+          className={`miniapps-card ${isAlphaLikeMedia(item) ? "miniapps-card-alpha" : ""}`}
+          key={item.id}
+          style={item.ar ? ({ "--ar": item.ar } as CSSProperties) : undefined}
+        >
           {renderMedia(item)}
         </figure>
       ))}

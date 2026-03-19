@@ -1,0 +1,1775 @@
+{
+  "fetchedAt": "2026-03-16T17:53:43.787Z",
+  "source": "out",
+  "projects": {
+    "delimobil": {
+      "backLabel": "← Back to projects",
+      "title": "DELIMOBIL",
+      "materialsFolder": "delimobil",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/delimobil/delimobil_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "delimobil-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "delimobil-materials-row",
+              "type": "row",
+              "row": {
+                "id": "delimobil-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "delimobil-materials-1",
+                    "src": "/materials/delimobil/thumb/delimobil-thumb.mp4",
+                    "alt": "DELIMOBIL material 1"
+                  },
+                  {
+                    "id": "delimobil-materials-2",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_000.png",
+                    "alt": "DELIMOBIL material 2"
+                  },
+                  {
+                    "id": "delimobil-materials-3",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_001.png",
+                    "alt": "DELIMOBIL material 3"
+                  },
+                  {
+                    "id": "delimobil-materials-4",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_002.png",
+                    "alt": "DELIMOBIL material 4"
+                  },
+                  {
+                    "id": "delimobil-materials-5",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_003.png",
+                    "alt": "DELIMOBIL material 5"
+                  },
+                  {
+                    "id": "delimobil-materials-6",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_004.png",
+                    "alt": "DELIMOBIL material 6"
+                  },
+                  {
+                    "id": "delimobil-materials-7",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_005.png",
+                    "alt": "DELIMOBIL material 7"
+                  },
+                  {
+                    "id": "delimobil-materials-8",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_006.png",
+                    "alt": "DELIMOBIL material 8"
+                  },
+                  {
+                    "id": "delimobil-materials-9",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_007.png",
+                    "alt": "DELIMOBIL material 9"
+                  },
+                  {
+                    "id": "delimobil-materials-10",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_008.png",
+                    "alt": "DELIMOBIL material 10"
+                  },
+                  {
+                    "id": "delimobil-materials-11",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_009.png",
+                    "alt": "DELIMOBIL material 11"
+                  },
+                  {
+                    "id": "delimobil-materials-12",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_010.png",
+                    "alt": "DELIMOBIL material 12"
+                  },
+                  {
+                    "id": "delimobil-materials-13",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_011.png",
+                    "alt": "DELIMOBIL material 13"
+                  },
+                  {
+                    "id": "delimobil-materials-14",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_012.png",
+                    "alt": "DELIMOBIL material 14"
+                  },
+                  {
+                    "id": "delimobil-materials-15",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_013.png",
+                    "alt": "DELIMOBIL material 15"
+                  },
+                  {
+                    "id": "delimobil-materials-16",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_014.png",
+                    "alt": "DELIMOBIL material 16"
+                  },
+                  {
+                    "id": "delimobil-materials-17",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_015.png",
+                    "alt": "DELIMOBIL material 17"
+                  },
+                  {
+                    "id": "delimobil-materials-18",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_016.png",
+                    "alt": "DELIMOBIL material 18"
+                  },
+                  {
+                    "id": "delimobil-materials-19",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_017.png",
+                    "alt": "DELIMOBIL material 19"
+                  },
+                  {
+                    "id": "delimobil-materials-20",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_018.png",
+                    "alt": "DELIMOBIL material 20"
+                  },
+                  {
+                    "id": "delimobil-materials-21",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_019.png",
+                    "alt": "DELIMOBIL material 21"
+                  },
+                  {
+                    "id": "delimobil-materials-22",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_020.png",
+                    "alt": "DELIMOBIL material 22"
+                  },
+                  {
+                    "id": "delimobil-materials-23",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_021.png",
+                    "alt": "DELIMOBIL material 23"
+                  },
+                  {
+                    "id": "delimobil-materials-24",
+                    "src": "/materials/delimobil/thumb/png/kling_20260310_VIDEO_make_backg_5429_022.png",
+                    "alt": "DELIMOBIL material 24"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "eapteka": {
+      "backLabel": "← Back to projects",
+      "title": "Eapteka",
+      "materialsFolder": "eapteka",
+      "tags": [
+        "3d",
+        "ai"
+      ],
+      "referenceStyle": {
+        "mode": "default",
+        "siteUrl": "",
+        "styleName": "",
+        "useThisStyle": false,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/eapteka/sber_eapteka_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "eapteka-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "eapteka-materials-row",
+              "type": "row",
+              "row": {
+                "id": "eapteka-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "eapteka-materials-1",
+                    "src": "/materials/eapteka/eapteka_thumb.png",
+                    "alt": "Eapteka material 1"
+                  },
+                  {
+                    "id": "eapteka-materials-2",
+                    "src": "/materials/eapteka/faces.mp4",
+                    "alt": "Eapteka material 2"
+                  },
+                  {
+                    "id": "eapteka-materials-3",
+                    "src": "/materials/eapteka/gif1.webm",
+                    "alt": "Eapteka material 3"
+                  },
+                  {
+                    "id": "eapteka-materials-4",
+                    "src": "/materials/eapteka/gif1/000000.png",
+                    "alt": "Eapteka material 4"
+                  },
+                  {
+                    "id": "eapteka-materials-5",
+                    "src": "/materials/eapteka/gif1/000001.png",
+                    "alt": "Eapteka material 5"
+                  },
+                  {
+                    "id": "eapteka-materials-6",
+                    "src": "/materials/eapteka/gif1/000002.png",
+                    "alt": "Eapteka material 6"
+                  },
+                  {
+                    "id": "eapteka-materials-7",
+                    "src": "/materials/eapteka/gif1/000003.png",
+                    "alt": "Eapteka material 7"
+                  },
+                  {
+                    "id": "eapteka-materials-8",
+                    "src": "/materials/eapteka/gif1/000004.png",
+                    "alt": "Eapteka material 8"
+                  },
+                  {
+                    "id": "eapteka-materials-9",
+                    "src": "/materials/eapteka/gif1/000005.png",
+                    "alt": "Eapteka material 9"
+                  },
+                  {
+                    "id": "eapteka-materials-10",
+                    "src": "/materials/eapteka/gif1/000006.png",
+                    "alt": "Eapteka material 10"
+                  },
+                  {
+                    "id": "eapteka-materials-11",
+                    "src": "/materials/eapteka/gif1/000007.png",
+                    "alt": "Eapteka material 11"
+                  },
+                  {
+                    "id": "eapteka-materials-12",
+                    "src": "/materials/eapteka/gif1/000008.png",
+                    "alt": "Eapteka material 12"
+                  },
+                  {
+                    "id": "eapteka-materials-13",
+                    "src": "/materials/eapteka/gif1/000009.png",
+                    "alt": "Eapteka material 13"
+                  },
+                  {
+                    "id": "eapteka-materials-14",
+                    "src": "/materials/eapteka/gif1/000010.png",
+                    "alt": "Eapteka material 14"
+                  },
+                  {
+                    "id": "eapteka-materials-15",
+                    "src": "/materials/eapteka/gif1/000011.png",
+                    "alt": "Eapteka material 15"
+                  },
+                  {
+                    "id": "eapteka-materials-16",
+                    "src": "/materials/eapteka/gif1/000012.png",
+                    "alt": "Eapteka material 16"
+                  },
+                  {
+                    "id": "eapteka-materials-17",
+                    "src": "/materials/eapteka/gif1/000013.png",
+                    "alt": "Eapteka material 17"
+                  },
+                  {
+                    "id": "eapteka-materials-18",
+                    "src": "/materials/eapteka/gif1/000014.png",
+                    "alt": "Eapteka material 18"
+                  },
+                  {
+                    "id": "eapteka-materials-19",
+                    "src": "/materials/eapteka/gif1/000015.png",
+                    "alt": "Eapteka material 19"
+                  },
+                  {
+                    "id": "eapteka-materials-20",
+                    "src": "/materials/eapteka/gif1/000016.png",
+                    "alt": "Eapteka material 20"
+                  },
+                  {
+                    "id": "eapteka-materials-21",
+                    "src": "/materials/eapteka/gif1/000017.png",
+                    "alt": "Eapteka material 21"
+                  },
+                  {
+                    "id": "eapteka-materials-22",
+                    "src": "/materials/eapteka/gif1/000018.png",
+                    "alt": "Eapteka material 22"
+                  },
+                  {
+                    "id": "eapteka-materials-23",
+                    "src": "/materials/eapteka/gif1/000019.png",
+                    "alt": "Eapteka material 23"
+                  },
+                  {
+                    "id": "eapteka-materials-24",
+                    "src": "/materials/eapteka/gif1/000020.png",
+                    "alt": "Eapteka material 24"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "green-idea": {
+      "backLabel": "← Back to projects",
+      "title": "GREEN IDEA",
+      "materialsFolder": "green-idea",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/green-idea/green-idea_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "hospitality": {
+      "backLabel": "← Back to projects",
+      "title": "HOSPITALITY",
+      "materialsFolder": "hospitality",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/hospitality/hospitality_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "i-want-to-know-everything": {
+      "backLabel": "← Back to projects",
+      "title": "I WANT TO KNOW EVERYTHING",
+      "materialsFolder": "i-want-to-know-everything",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/i-want-to-know-everything/i-want-to-know-everything_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "love-generation": {
+      "backLabel": "← Back to projects",
+      "title": "SMILE / LUCKY COIN",
+      "materialsFolder": "love-generation",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/love-generation/love_generation (1080p)_1_prob4.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "love-generation-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "love-generation-materials-row",
+              "type": "row",
+              "row": {
+                "id": "love-generation-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "love-generation-materials-1",
+                    "src": "/materials/love-generation/GLOSS_backstage.mp4",
+                    "alt": "SMILE / LUCKY COIN material 1"
+                  },
+                  {
+                    "id": "love-generation-materials-2",
+                    "src": "/materials/love-generation/lg_sketch.png",
+                    "alt": "SMILE / LUCKY COIN material 2"
+                  },
+                  {
+                    "id": "love-generation-materials-3",
+                    "src": "/materials/love-generation/love_generation_hero.mp4",
+                    "alt": "SMILE / LUCKY COIN material 3"
+                  },
+                  {
+                    "id": "love-generation-materials-4",
+                    "src": "/materials/love-generation/PALETKA_backstage.mp4",
+                    "alt": "SMILE / LUCKY COIN material 4"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "mail-ru": {
+      "backLabel": "← Back to projects",
+      "title": "MAIL.RU",
+      "materialsFolder": "mail-ru",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/mail-ru/mail_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "mail-ru-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "mail-ru-materials-row",
+              "type": "row",
+              "row": {
+                "id": "mail-ru-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "mail-ru-materials-1",
+                    "src": "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-02.jpg",
+                    "alt": "MAIL.RU material 1"
+                  },
+                  {
+                    "id": "mail-ru-materials-2",
+                    "src": "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-02.png",
+                    "alt": "MAIL.RU material 2"
+                  },
+                  {
+                    "id": "mail-ru-materials-3",
+                    "src": "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-15.jpg",
+                    "alt": "MAIL.RU material 3"
+                  },
+                  {
+                    "id": "mail-ru-materials-4",
+                    "src": "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-15.png",
+                    "alt": "MAIL.RU material 4"
+                  },
+                  {
+                    "id": "mail-ru-materials-5",
+                    "src": "/materials/mail-ru/3d-pics/photo_2026-03-09_13-27-21.jpg",
+                    "alt": "MAIL.RU material 5"
+                  },
+                  {
+                    "id": "mail-ru-materials-6",
+                    "src": "/materials/mail-ru/3d-pics/photo_2026-03-09_13-33-56.jpg",
+                    "alt": "MAIL.RU material 6"
+                  },
+                  {
+                    "id": "mail-ru-materials-7",
+                    "src": "/materials/mail-ru/MAIL_anim_1_v02.mp4",
+                    "alt": "MAIL.RU material 7"
+                  },
+                  {
+                    "id": "mail-ru-materials-8",
+                    "src": "/materials/mail-ru/MAIL_anim_1_v07.mp4",
+                    "alt": "MAIL.RU material 8"
+                  },
+                  {
+                    "id": "mail-ru-materials-9",
+                    "src": "/materials/mail-ru/MAIL_anim_3_v02 (2).mp4",
+                    "alt": "MAIL.RU material 9"
+                  },
+                  {
+                    "id": "mail-ru-materials-10",
+                    "src": "/materials/mail-ru/MAIL_anim_fin_1_v02.mp4",
+                    "alt": "MAIL.RU material 10"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "mansi": {
+      "backLabel": "← Back to projects",
+      "title": "MANSI",
+      "materialsFolder": "mansi",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/mansi/mansi_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "mosmuseum": {
+      "backLabel": "← Back to projects",
+      "title": "MOSMUSEUM",
+      "materialsFolder": "mosmuseum",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/mosmuseum/mosmuseum_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "mts": {
+      "backLabel": "← Back to projects",
+      "title": "MTC / НИКУСАЙ",
+      "materialsFolder": "mts",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/mts/mts_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "mts-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "mts-materials-row",
+              "type": "row",
+              "row": {
+                "id": "mts-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "mts-materials-1",
+                    "src": "/materials/mts/reels/Snippet_FINAL.mp4",
+                    "alt": "MTC / НИКУСАЙ material 1"
+                  },
+                  {
+                    "id": "mts-materials-2",
+                    "src": "/materials/mts/reels/vocaloids_001_v001.mp4",
+                    "alt": "MTC / НИКУСАЙ material 2"
+                  },
+                  {
+                    "id": "mts-materials-3",
+                    "src": "/materials/mts/reels/Общий_рилс_MASTER_version.mp4",
+                    "alt": "MTC / НИКУСАЙ material 3"
+                  },
+                  {
+                    "id": "mts-materials-4",
+                    "src": "/materials/mts/reels/Рилс_Черной_FINAL.mp4",
+                    "alt": "MTC / НИКУСАЙ material 4"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "presents-fest-2024": {
+      "backLabel": "← Back to projects",
+      "title": "PRESENTS FEST 2024",
+      "materialsFolder": "presents-fest-2024",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/presents-fest-2024/presents-fest-2024_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "project-p6": {
+      "backLabel": "← Back to projects",
+      "title": "PROJECT-P6",
+      "materialsFolder": "project-p6",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "$undefined",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "rocs": {
+      "backLabel": "← Back to projects",
+      "title": "R.O.C.S",
+      "materialsFolder": "rocs",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/rocs/rocs_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "storyboard-rocs",
+          "header": "Раскадровка",
+          "about": "",
+          "blocks": [
+            {
+              "id": "storyboard-rocs-grid",
+              "type": "row",
+              "row": {
+                "id": "storyboard-rocs-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "rocs-sb-01",
+                    "src": "/materials/rocs/sb/1.png",
+                    "alt": "R.O.C.S storyboard 1"
+                  },
+                  {
+                    "id": "rocs-sb-02",
+                    "src": "/materials/rocs/sb/2.png",
+                    "alt": "R.O.C.S storyboard 2"
+                  },
+                  {
+                    "id": "rocs-sb-03",
+                    "src": "/materials/rocs/sb/3.png",
+                    "alt": "R.O.C.S storyboard 3"
+                  },
+                  {
+                    "id": "rocs-sb-04",
+                    "src": "/materials/rocs/sb/4.png",
+                    "alt": "R.O.C.S storyboard 4"
+                  },
+                  {
+                    "id": "rocs-sb-05",
+                    "src": "/materials/rocs/sb/5.png",
+                    "alt": "R.O.C.S storyboard 5"
+                  },
+                  {
+                    "id": "rocs-sb-06",
+                    "src": "/materials/rocs/sb/6.png",
+                    "alt": "R.O.C.S storyboard 6"
+                  },
+                  {
+                    "id": "rocs-sb-07",
+                    "src": "/materials/rocs/sb/7.png",
+                    "alt": "R.O.C.S storyboard 7"
+                  },
+                  {
+                    "id": "rocs-sb-08",
+                    "src": "/materials/rocs/sb/8.png",
+                    "alt": "R.O.C.S storyboard 8"
+                  },
+                  {
+                    "id": "rocs-sb-09",
+                    "src": "/materials/rocs/sb/9.png",
+                    "alt": "R.O.C.S storyboard 9"
+                  },
+                  {
+                    "id": "rocs-sb-10",
+                    "src": "/materials/rocs/sb/10.png",
+                    "alt": "R.O.C.S storyboard 10"
+                  },
+                  {
+                    "id": "rocs-sb-11",
+                    "src": "/materials/rocs/sb/11.png",
+                    "alt": "R.O.C.S storyboard 11"
+                  },
+                  {
+                    "id": "rocs-sb-12",
+                    "src": "/materials/rocs/sb/12.png",
+                    "alt": "R.O.C.S storyboard 12"
+                  },
+                  {
+                    "id": "rocs-sb-13",
+                    "src": "/materials/rocs/sb/13.png",
+                    "alt": "R.O.C.S storyboard 13"
+                  },
+                  {
+                    "id": "rocs-sb-14",
+                    "src": "/materials/rocs/sb/14.png",
+                    "alt": "R.O.C.S storyboard 14"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "saint-spring-v3": {
+      "backLabel": "← Back to projects",
+      "title": "SAINT SPRING V3",
+      "materialsFolder": "saint-spring-v3",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/saint-spring-v3/saint-spring-v3_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "sber": {
+      "backLabel": "← Back to projects",
+      "title": "SBER",
+      "materialsFolder": "sber",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "$undefined",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "sber-high-res": {
+      "backLabel": "← Back to projects",
+      "title": "SBER HIGH RES",
+      "materialsFolder": "sber-high-res",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/sber-high-res/sber-high-res_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "sber-terminal": {
+      "backLabel": "← Back to projects",
+      "title": "SBER",
+      "materialsFolder": "sber-terminal",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/sber-terminal/sber-terminal_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "terminal-sber",
+          "header": "Терминал",
+          "about": "",
+          "blocks": [
+            {
+              "id": "terminal-sber-grid",
+              "type": "row",
+              "row": {
+                "id": "terminal-sber-grid-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "terminal-grid-1",
+                    "src": "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-06.jpg",
+                    "alt": "Sber terminal grid 1"
+                  },
+                  {
+                    "id": "terminal-grid-2",
+                    "src": "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-17.jpg",
+                    "alt": "Sber terminal grid 2"
+                  },
+                  {
+                    "id": "terminal-grid-3",
+                    "src": "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-20.jpg",
+                    "alt": "Sber terminal grid 3"
+                  },
+                  {
+                    "id": "terminal-grid-4",
+                    "src": "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-22.jpg",
+                    "alt": "Sber terminal grid 4"
+                  },
+                  {
+                    "id": "terminal-grid-5",
+                    "src": "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-23.jpg",
+                    "alt": "Sber terminal grid 5"
+                  },
+                  {
+                    "id": "terminal-grid-6",
+                    "src": "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-25.jpg",
+                    "alt": "Sber terminal grid 6"
+                  },
+                  {
+                    "id": "terminal-grid-7",
+                    "src": "/materials/sber-terminal/term_grid/photo_2026-03-09_15-05-27.jpg",
+                    "alt": "Sber terminal grid 7"
+                  },
+                  {
+                    "id": "terminal-grid-8",
+                    "src": "/materials/sber-terminal/term_grid/photo_2026-03-09_15-08-25.jpg",
+                    "alt": "Sber terminal grid 8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "terminal-sber-row",
+              "type": "row",
+              "row": {
+                "id": "terminal-sber-row-items",
+                "layout": "row-3",
+                "items": [
+                  {
+                    "id": "terminal-row-1",
+                    "src": "/materials/sber-terminal/term_row1/term-2-1.jpg",
+                    "alt": "Sber terminal row 1"
+                  },
+                  {
+                    "id": "terminal-row-2",
+                    "src": "/materials/sber-terminal/term_row1/term-2-2.jpg",
+                    "alt": "Sber terminal row 2"
+                  },
+                  {
+                    "id": "terminal-row-3",
+                    "src": "/materials/sber-terminal/term_row1/term-2-3.jpg",
+                    "alt": "Sber terminal row 3"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "sobchak": {
+      "backLabel": "← Back to projects",
+      "title": "ОСТОРОЖНО СОБЧАК",
+      "materialsFolder": "sobchak",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/sobchak/sobchak_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "sobchak-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "sobchak-materials-row",
+              "type": "row",
+              "row": {
+                "id": "sobchak-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "sobchak-materials-1",
+                    "src": "/materials/sobchak/1 gif1.gif",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 1"
+                  },
+                  {
+                    "id": "sobchak-materials-2",
+                    "src": "/materials/sobchak/10 pic6.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 2"
+                  },
+                  {
+                    "id": "sobchak-materials-3",
+                    "src": "/materials/sobchak/11 pic10.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 3"
+                  },
+                  {
+                    "id": "sobchak-materials-4",
+                    "src": "/materials/sobchak/12 gif4.gif",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 4"
+                  },
+                  {
+                    "id": "sobchak-materials-5",
+                    "src": "/materials/sobchak/2 storyboard.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 5"
+                  },
+                  {
+                    "id": "sobchak-materials-6",
+                    "src": "/materials/sobchak/2 storyboard.png",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 6"
+                  },
+                  {
+                    "id": "sobchak-materials-7",
+                    "src": "/materials/sobchak/3 characters.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 7"
+                  },
+                  {
+                    "id": "sobchak-materials-8",
+                    "src": "/materials/sobchak/4 dog.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 8"
+                  },
+                  {
+                    "id": "sobchak-materials-9",
+                    "src": "/materials/sobchak/5 dog.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 9"
+                  },
+                  {
+                    "id": "sobchak-materials-10",
+                    "src": "/materials/sobchak/5 gif2.gif",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 10"
+                  },
+                  {
+                    "id": "sobchak-materials-11",
+                    "src": "/materials/sobchak/6 gif3.gif",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 11"
+                  },
+                  {
+                    "id": "sobchak-materials-12",
+                    "src": "/materials/sobchak/7 anim.gif",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 12"
+                  },
+                  {
+                    "id": "sobchak-materials-13",
+                    "src": "/materials/sobchak/8 pic1.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 13"
+                  },
+                  {
+                    "id": "sobchak-materials-14",
+                    "src": "/materials/sobchak/8 pic2.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 14"
+                  },
+                  {
+                    "id": "sobchak-materials-15",
+                    "src": "/materials/sobchak/9 pic3.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 15"
+                  },
+                  {
+                    "id": "sobchak-materials-16",
+                    "src": "/materials/sobchak/9 pic4.jpeg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 16"
+                  },
+                  {
+                    "id": "sobchak-materials-17",
+                    "src": "/materials/sobchak/9 pic5.jpg",
+                    "alt": "ОСТОРОЖНО СОБЧАК material 17"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "stranneyshie-horiz": {
+      "backLabel": "← Back to projects",
+      "title": "STRANNEYSHIE HORIZ",
+      "materialsFolder": "stranneyshie-horiz",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/stranneyshie-horiz/stranneyshie-horiz_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "supermarket-trollys-dream-v1": {
+      "backLabel": "← Back to projects",
+      "title": "SUPERMARKET TROLLY'S DREAM",
+      "materialsFolder": "supermarket-trollys-dream-v1",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/supermarket-trollys-dream-v1/supermarket-trollys-dream-v1_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "taxi-v2": {
+      "backLabel": "← Back to projects",
+      "title": "TAXI V2",
+      "materialsFolder": "taxi-v2",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/taxi-v2/taxi-v2_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "the-skin-v1": {
+      "backLabel": "← Back to projects",
+      "title": "THE SKIN V1",
+      "materialsFolder": "the-skin-v1",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/the-skin-v1/the-skin-v1_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "tmp": {
+      "backLabel": "← Back to projects",
+      "title": "TMP",
+      "materialsFolder": "tmp",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "$undefined",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "unprincipled": {
+      "backLabel": "← Back to projects",
+      "title": "UNPRINCIPLED",
+      "materialsFolder": "unprincipled",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/unprincipled/unprincipled_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "uralsib": {
+      "backLabel": "← Back to projects",
+      "title": "УРАЛСИБ",
+      "materialsFolder": "uralsib",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/uralsib/uralsib_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "characters-uralsib",
+          "header": "Персонажи",
+          "about": "",
+          "blocks": [
+            {
+              "id": "uralsib-characters-row-1",
+              "type": "row",
+              "row": {
+                "id": "uralsib-characters-items-1",
+                "layout": "row-3",
+                "items": [
+                  {
+                    "id": "uralsib-pers1-1",
+                    "src": "/materials/uralsib/pers_sketch/pers1-1.jpg",
+                    "alt": "Uralsib character sketch 1-1"
+                  },
+                  {
+                    "id": "uralsib-pers1-2",
+                    "src": "/materials/uralsib/pers_sketch/pers1-2.jpg",
+                    "alt": "Uralsib character sketch 1-2"
+                  },
+                  {
+                    "id": "uralsib-pers1-3",
+                    "src": "/materials/uralsib/pers_sketch/pers1-3.jpg",
+                    "alt": "Uralsib character sketch 1-3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "uralsib-characters-row-2",
+              "type": "row",
+              "row": {
+                "id": "uralsib-characters-items-2",
+                "layout": "row-3",
+                "items": [
+                  {
+                    "id": "uralsib-pers2-1",
+                    "src": "/materials/uralsib/pers_sketch/pers2-1.jpg",
+                    "alt": "Uralsib character sketch 2-1"
+                  },
+                  {
+                    "id": "uralsib-pers2-2",
+                    "src": "/materials/uralsib/pers_sketch/pers2-2.jpg",
+                    "alt": "Uralsib character sketch 2-2"
+                  },
+                  {
+                    "id": "uralsib-pers2-3",
+                    "src": "/materials/uralsib/pers_sketch/pers2-3.png",
+                    "alt": "Uralsib character sketch 2-3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "uralsib-characters-row-3",
+              "type": "row",
+              "row": {
+                "id": "uralsib-characters-items-3",
+                "layout": "row-3",
+                "items": [
+                  {
+                    "id": "uralsib-pers3-1",
+                    "src": "/materials/uralsib/pers_sketch/pers3-1.jpg",
+                    "alt": "Uralsib character sketch 3-1"
+                  },
+                  {
+                    "id": "uralsib-pers3-2",
+                    "src": "/materials/uralsib/pers_sketch/pers3-2.jpg",
+                    "alt": "Uralsib character sketch 3-2"
+                  },
+                  {
+                    "id": "uralsib-pers3-3",
+                    "src": "/materials/uralsib/pers_sketch/pers3-3.jpg",
+                    "alt": "Uralsib character sketch 3-3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "uralsib-characters-row-4",
+              "type": "row",
+              "row": {
+                "id": "uralsib-characters-items-4",
+                "layout": "row-1",
+                "items": [
+                  {
+                    "id": "uralsib-pers4",
+                    "src": "/materials/uralsib/pers_sketch/pers4.jpg",
+                    "alt": "Uralsib character sketch 4"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "vk-neo": {
+      "backLabel": "← Back to projects",
+      "title": "VK / NEO",
+      "materialsFolder": "vk-neo",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/vk-neo/neo - hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "vk-neo-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "vk-neo-materials-row",
+              "type": "row",
+              "row": {
+                "id": "vk-neo-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "vk-neo-materials-1",
+                    "src": "/materials/vk-neo/dragon1.jpeg",
+                    "alt": "VK / NEO material 1"
+                  },
+                  {
+                    "id": "vk-neo-materials-2",
+                    "src": "/materials/vk-neo/dragon2.jpg",
+                    "alt": "VK / NEO material 2"
+                  },
+                  {
+                    "id": "vk-neo-materials-3",
+                    "src": "/materials/vk-neo/neo_animatic.mp4",
+                    "alt": "VK / NEO material 3"
+                  },
+                  {
+                    "id": "vk-neo-materials-4",
+                    "src": "/materials/vk-neo/rob1.png",
+                    "alt": "VK / NEO material 4"
+                  },
+                  {
+                    "id": "vk-neo-materials-5",
+                    "src": "/materials/vk-neo/rob2.jpeg",
+                    "alt": "VK / NEO material 5"
+                  },
+                  {
+                    "id": "vk-neo-materials-6",
+                    "src": "/materials/vk-neo/rob3.jpeg",
+                    "alt": "VK / NEO material 6"
+                  },
+                  {
+                    "id": "vk-neo-materials-7",
+                    "src": "/materials/vk-neo/unicorn.jpg",
+                    "alt": "VK / NEO material 7"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "volchok": {
+      "backLabel": "← Back to projects",
+      "title": "VOLCHOK",
+      "materialsFolder": "volchok",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/volchok/volchok_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [],
+      "thanksText": ""
+    },
+    "vtb-1": {
+      "backLabel": "← Back to projects",
+      "title": "ВТБ / АВТО",
+      "materialsFolder": "vtb-1",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/vtb-1/ВТБ финал.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "vtb-1-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "vtb-1-materials-row",
+              "type": "row",
+              "row": {
+                "id": "vtb-1-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "vtb-1-materials-1",
+                    "src": "/materials/vtb-1/sketches/1.png",
+                    "alt": "ВТБ / АВТО material 1"
+                  },
+                  {
+                    "id": "vtb-1-materials-2",
+                    "src": "/materials/vtb-1/sketches/2.png",
+                    "alt": "ВТБ / АВТО material 2"
+                  },
+                  {
+                    "id": "vtb-1-materials-3",
+                    "src": "/materials/vtb-1/sketches/3.jpeg",
+                    "alt": "ВТБ / АВТО material 3"
+                  },
+                  {
+                    "id": "vtb-1-materials-4",
+                    "src": "/materials/vtb-1/sketches/4.jpeg",
+                    "alt": "ВТБ / АВТО material 4"
+                  },
+                  {
+                    "id": "vtb-1-materials-5",
+                    "src": "/materials/vtb-1/sketches/5.jpeg",
+                    "alt": "ВТБ / АВТО material 5"
+                  },
+                  {
+                    "id": "vtb-1-materials-6",
+                    "src": "/materials/vtb-1/sketches/6.jpeg",
+                    "alt": "ВТБ / АВТО material 6"
+                  },
+                  {
+                    "id": "vtb-1-materials-7",
+                    "src": "/materials/vtb-1/vtb_AI textures.mp4",
+                    "alt": "ВТБ / АВТО material 7"
+                  },
+                  {
+                    "id": "vtb-1-materials-8",
+                    "src": "/materials/vtb-1/vtb_layers_1.mp4",
+                    "alt": "ВТБ / АВТО material 8"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "yandex-incl": {
+      "backLabel": "← Back to projects",
+      "title": "YANDEX / INCLUSIVE",
+      "materialsFolder": "yandex-incl",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/yandex-incl/Баскетбол_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "yandex-incl-materials",
+          "header": "Materials",
+          "about": "",
+          "blocks": [
+            {
+              "id": "yandex-incl-materials-row",
+              "type": "row",
+              "row": {
+                "id": "yandex-incl-materials-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "yandex-incl-materials-1",
+                    "src": "/materials/yandex-incl/bask_sketch2.jpg",
+                    "alt": "YANDEX / INCLUSIVE material 1"
+                  },
+                  {
+                    "id": "yandex-incl-materials-2",
+                    "src": "/materials/yandex-incl/bask1.gif",
+                    "alt": "YANDEX / INCLUSIVE material 2"
+                  },
+                  {
+                    "id": "yandex-incl-materials-3",
+                    "src": "/materials/yandex-incl/girl_sketch_pw.jpg",
+                    "alt": "YANDEX / INCLUSIVE material 3"
+                  },
+                  {
+                    "id": "yandex-incl-materials-4",
+                    "src": "/materials/yandex-incl/gotov1.gif",
+                    "alt": "YANDEX / INCLUSIVE material 4"
+                  },
+                  {
+                    "id": "yandex-incl-materials-5",
+                    "src": "/materials/yandex-incl/sb_gorovka.jpg",
+                    "alt": "YANDEX / INCLUSIVE material 5"
+                  },
+                  {
+                    "id": "yandex-incl-materials-6",
+                    "src": "/materials/yandex-incl/Баскетбол 2.mp4",
+                    "alt": "YANDEX / INCLUSIVE material 6"
+                  },
+                  {
+                    "id": "yandex-incl-materials-7",
+                    "src": "/materials/yandex-incl/Готовка_hero.mp4",
+                    "alt": "YANDEX / INCLUSIVE material 7"
+                  },
+                  {
+                    "id": "yandex-incl-materials-8",
+                    "src": "/materials/yandex-incl/Готовка2.mp4",
+                    "alt": "YANDEX / INCLUSIVE material 8"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "zvuk": {
+      "backLabel": "← Back to projects",
+      "title": "SBER / ЗВУК",
+      "materialsFolder": "zvuk",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/zvuk/zvuk_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "storyboard-sb",
+          "header": "Раскадровка",
+          "about": "",
+          "blocks": [
+            {
+              "id": "storyboard-sb-grid",
+              "type": "row",
+              "row": {
+                "id": "storyboard-sb-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "zvuk-sb-01",
+                    "src": "/materials/zvuk/sb/1.png",
+                    "alt": "ZVUK storyboard 1"
+                  },
+                  {
+                    "id": "zvuk-sb-02",
+                    "src": "/materials/zvuk/sb/2.png",
+                    "alt": "ZVUK storyboard 2"
+                  },
+                  {
+                    "id": "zvuk-sb-03",
+                    "src": "/materials/zvuk/sb/3.png",
+                    "alt": "ZVUK storyboard 3"
+                  },
+                  {
+                    "id": "zvuk-sb-04",
+                    "src": "/materials/zvuk/sb/4.jpg",
+                    "alt": "ZVUK storyboard 4"
+                  },
+                  {
+                    "id": "zvuk-sb-05",
+                    "src": "/materials/zvuk/sb/5.png",
+                    "alt": "ZVUK storyboard 5"
+                  },
+                  {
+                    "id": "zvuk-sb-06",
+                    "src": "/materials/zvuk/sb/6.png",
+                    "alt": "ZVUK storyboard 6"
+                  },
+                  {
+                    "id": "zvuk-sb-07",
+                    "src": "/materials/zvuk/sb/7.jpg",
+                    "alt": "ZVUK storyboard 7"
+                  },
+                  {
+                    "id": "zvuk-sb-08",
+                    "src": "/materials/zvuk/sb/8.png",
+                    "alt": "ZVUK storyboard 8"
+                  },
+                  {
+                    "id": "zvuk-sb-09",
+                    "src": "/materials/zvuk/sb/9.png",
+                    "alt": "ZVUK storyboard 9"
+                  },
+                  {
+                    "id": "zvuk-sb-10",
+                    "src": "/materials/zvuk/sb/10.png",
+                    "alt": "ZVUK storyboard 10"
+                  },
+                  {
+                    "id": "zvuk-sb-11",
+                    "src": "/materials/zvuk/sb/11.png",
+                    "alt": "ZVUK storyboard 11"
+                  },
+                  {
+                    "id": "zvuk-sb-12",
+                    "src": "/materials/zvuk/sb/12.png",
+                    "alt": "ZVUK storyboard 12"
+                  },
+                  {
+                    "id": "zvuk-sb-13",
+                    "src": "/materials/zvuk/sb/13.png",
+                    "alt": "ZVUK storyboard 13"
+                  },
+                  {
+                    "id": "zvuk-sb-14",
+                    "src": "/materials/zvuk/sb/14.png",
+                    "alt": "ZVUK storyboard 14"
+                  },
+                  {
+                    "id": "zvuk-sb-15",
+                    "src": "/materials/zvuk/sb/15.png",
+                    "alt": "ZVUK storyboard 15"
+                  },
+                  {
+                    "id": "zvuk-sb-16",
+                    "src": "/materials/zvuk/sb/16.png",
+                    "alt": "ZVUK storyboard 16"
+                  },
+                  {
+                    "id": "zvuk-sb-17",
+                    "src": "/materials/zvuk/sb/17.png",
+                    "alt": "ZVUK storyboard 17"
+                  },
+                  {
+                    "id": "zvuk-sb-18",
+                    "src": "/materials/zvuk/sb/18.png",
+                    "alt": "ZVUK storyboard 18"
+                  },
+                  {
+                    "id": "zvuk-sb-19",
+                    "src": "/materials/zvuk/sb/19.png",
+                    "alt": "ZVUK storyboard 19"
+                  },
+                  {
+                    "id": "zvuk-sb-20",
+                    "src": "/materials/zvuk/sb/20.png",
+                    "alt": "ZVUK storyboard 20"
+                  },
+                  {
+                    "id": "zvuk-sb-21",
+                    "src": "/materials/zvuk/sb/21.png",
+                    "alt": "ZVUK storyboard 21"
+                  },
+                  {
+                    "id": "zvuk-sb-22",
+                    "src": "/materials/zvuk/sb/22.png",
+                    "alt": "ZVUK storyboard 22"
+                  },
+                  {
+                    "id": "zvuk-sb-23",
+                    "src": "/materials/zvuk/sb/23.png",
+                    "alt": "ZVUK storyboard 23"
+                  },
+                  {
+                    "id": "zvuk-sb-24",
+                    "src": "/materials/zvuk/sb/24.png",
+                    "alt": "ZVUK storyboard 24"
+                  },
+                  {
+                    "id": "zvuk-sb-25",
+                    "src": "/materials/zvuk/sb/25.png",
+                    "alt": "ZVUK storyboard 25"
+                  },
+                  {
+                    "id": "zvuk-sb-26",
+                    "src": "/materials/zvuk/sb/26.png",
+                    "alt": "ZVUK storyboard 26"
+                  },
+                  {
+                    "id": "zvuk-sb-27",
+                    "src": "/materials/zvuk/sb/27.png",
+                    "alt": "ZVUK storyboard 27"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    },
+    "zvuk-2": {
+      "backLabel": "← Back to projects",
+      "title": "ZVUK 2",
+      "materialsFolder": "zvuk-2",
+      "referenceStyle": {
+        "mode": "site",
+        "useThisStyle": true,
+        "useSiteStyle": true
+      },
+      "heroVideoSrc": "/materials/zvuk-2/zvuk-2_hero.mp4",
+      "introTexts": [
+        "Project materials and process overview."
+      ],
+      "sections": [
+        {
+          "id": "storyboard-sb",
+          "header": "Раскадровка",
+          "about": "",
+          "blocks": [
+            {
+              "id": "storyboard-sb-grid",
+              "type": "row",
+              "row": {
+                "id": "storyboard-sb-items",
+                "layout": "grid-3",
+                "items": [
+                  {
+                    "id": "zvuk-sb-01",
+                    "src": "/materials/zvuk/sb/1.png",
+                    "alt": "ZVUK storyboard 1"
+                  },
+                  {
+                    "id": "zvuk-sb-02",
+                    "src": "/materials/zvuk/sb/2.png",
+                    "alt": "ZVUK storyboard 2"
+                  },
+                  {
+                    "id": "zvuk-sb-03",
+                    "src": "/materials/zvuk/sb/3.png",
+                    "alt": "ZVUK storyboard 3"
+                  },
+                  {
+                    "id": "zvuk-sb-04",
+                    "src": "/materials/zvuk/sb/4.jpg",
+                    "alt": "ZVUK storyboard 4"
+                  },
+                  {
+                    "id": "zvuk-sb-05",
+                    "src": "/materials/zvuk/sb/5.png",
+                    "alt": "ZVUK storyboard 5"
+                  },
+                  {
+                    "id": "zvuk-sb-06",
+                    "src": "/materials/zvuk/sb/6.png",
+                    "alt": "ZVUK storyboard 6"
+                  },
+                  {
+                    "id": "zvuk-sb-07",
+                    "src": "/materials/zvuk/sb/7.jpg",
+                    "alt": "ZVUK storyboard 7"
+                  },
+                  {
+                    "id": "zvuk-sb-08",
+                    "src": "/materials/zvuk/sb/8.png",
+                    "alt": "ZVUK storyboard 8"
+                  },
+                  {
+                    "id": "zvuk-sb-09",
+                    "src": "/materials/zvuk/sb/9.png",
+                    "alt": "ZVUK storyboard 9"
+                  },
+                  {
+                    "id": "zvuk-sb-10",
+                    "src": "/materials/zvuk/sb/10.png",
+                    "alt": "ZVUK storyboard 10"
+                  },
+                  {
+                    "id": "zvuk-sb-11",
+                    "src": "/materials/zvuk/sb/11.png",
+                    "alt": "ZVUK storyboard 11"
+                  },
+                  {
+                    "id": "zvuk-sb-12",
+                    "src": "/materials/zvuk/sb/12.png",
+                    "alt": "ZVUK storyboard 12"
+                  },
+                  {
+                    "id": "zvuk-sb-13",
+                    "src": "/materials/zvuk/sb/13.png",
+                    "alt": "ZVUK storyboard 13"
+                  },
+                  {
+                    "id": "zvuk-sb-14",
+                    "src": "/materials/zvuk/sb/14.png",
+                    "alt": "ZVUK storyboard 14"
+                  },
+                  {
+                    "id": "zvuk-sb-15",
+                    "src": "/materials/zvuk/sb/15.png",
+                    "alt": "ZVUK storyboard 15"
+                  },
+                  {
+                    "id": "zvuk-sb-16",
+                    "src": "/materials/zvuk/sb/16.png",
+                    "alt": "ZVUK storyboard 16"
+                  },
+                  {
+                    "id": "zvuk-sb-17",
+                    "src": "/materials/zvuk/sb/17.png",
+                    "alt": "ZVUK storyboard 17"
+                  },
+                  {
+                    "id": "zvuk-sb-18",
+                    "src": "/materials/zvuk/sb/18.png",
+                    "alt": "ZVUK storyboard 18"
+                  },
+                  {
+                    "id": "zvuk-sb-19",
+                    "src": "/materials/zvuk/sb/19.png",
+                    "alt": "ZVUK storyboard 19"
+                  },
+                  {
+                    "id": "zvuk-sb-20",
+                    "src": "/materials/zvuk/sb/20.png",
+                    "alt": "ZVUK storyboard 20"
+                  },
+                  {
+                    "id": "zvuk-sb-21",
+                    "src": "/materials/zvuk/sb/21.png",
+                    "alt": "ZVUK storyboard 21"
+                  },
+                  {
+                    "id": "zvuk-sb-22",
+                    "src": "/materials/zvuk/sb/22.png",
+                    "alt": "ZVUK storyboard 22"
+                  },
+                  {
+                    "id": "zvuk-sb-23",
+                    "src": "/materials/zvuk/sb/23.png",
+                    "alt": "ZVUK storyboard 23"
+                  },
+                  {
+                    "id": "zvuk-sb-24",
+                    "src": "/materials/zvuk/sb/24.png",
+                    "alt": "ZVUK storyboard 24"
+                  },
+                  {
+                    "id": "zvuk-sb-25",
+                    "src": "/materials/zvuk/sb/25.png",
+                    "alt": "ZVUK storyboard 25"
+                  },
+                  {
+                    "id": "zvuk-sb-26",
+                    "src": "/materials/zvuk/sb/26.png",
+                    "alt": "ZVUK storyboard 26"
+                  },
+                  {
+                    "id": "zvuk-sb-27",
+                    "src": "/materials/zvuk/sb/27.png",
+                    "alt": "ZVUK storyboard 27"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "thanksText": ""
+    }
+  }
+}

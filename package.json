@@ -6,7 +6,7 @@
     "predev": "node scripts/generate-materials-index.mjs",
     "prebuild": "node scripts/generate-materials-index.mjs",
     "dev": "node scripts/dev-with-materials-watch.mjs",
-    "build": "next build",
+    "build": "next build && node scripts/prune-out-materials.mjs",
     "start": "next start",
     "lint": "eslint"
   },

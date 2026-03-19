@@ -18,21 +18,53 @@ const HERO_BY_FOLDER: Record<string, string> = {
   sobchak: "/materials/sobchak/sobchak_hero.mp4",
   mts: "/materials/mts/mts_hero.mp4",
   "mail-ru": "/materials/mail-ru/mail_hero.mp4",
+  delimobil: "/materials/delimobil/delimobil_hero.mp4",
+  "green-idea": "/materials/green-idea/green-idea_hero.mp4",
+  hospitality: "/materials/hospitality/hospitality_hero.mp4",
+  mosmuseum: "/materials/mosmuseum/mosmuseum_hero.mp4",
+  "presents-fest-2024": "/materials/presents-fest-2024/presents-fest-2024_hero.mp4",
   rocs: "/materials/rocs/rocs_hero.mp4",
+  "saint-spring-v3": "/materials/saint-spring-v3/saint-spring-v3_hero.mp4",
   "sber-terminal": "/materials/sber-terminal/sber-terminal_hero.mp4",
+  "sber-high-res": "/materials/sber-high-res/sber-high-res_hero.mp4",
+  mansi: "/materials/mansi/mansi_hero.mp4",
+  "stranneyshie-horiz": "/materials/stranneyshie-horiz/stranneyshie-horiz_hero.mp4",
+  "supermarket-trollys-dream-v1": "/materials/supermarket-trollys-dream-v1/supermarket-trollys-dream-v1_hero.mp4",
+  "taxi-v2": "/materials/taxi-v2/taxi-v2_hero.mp4",
+  "the-skin-v1": "/materials/the-skin-v1/the-skin-v1_hero.mp4",
+  unprincipled: "/materials/unprincipled/unprincipled_hero.mp4",
   uralsib: "/materials/uralsib/uralsib_hero.mp4",
+  volchok: "/materials/volchok/volchok_hero.mp4",
   "vtb-1": "/materials/vtb-1/ВТБ финал.mp4",
   zvuk: "/materials/zvuk/zvuk_hero.mp4",
+  "zvuk-2": "/materials/zvuk-2/zvuk-2_hero.mp4",
   "yandex-incl": "/materials/yandex-incl/Баскетбол_hero.mp4",
+  "i-want-to-know-everything": "/materials/i-want-to-know-everything/i-want-to-know-everything_hero.mp4",
 };
 const THUMB_BY_FOLDER: Record<string, string> = {
   eapteka: "/materials/eapteka/eapteka_thumb.webm",
+  delimobil: "/materials/delimobil/thumb/delimobil-thumb.webm",
+  "green-idea": "/materials/green-idea/thumb/green-idea-thumb.mp4",
+  hospitality: "/materials/hospitality/thumb/hospitality-thumb.mp4",
+  mosmuseum: "/materials/mosmuseum/thumb/mosmuseum-thumb.mp4",
+  "presents-fest-2024": "/materials/presents-fest-2024/thumb/presents-fest-2024-thumb.mp4",
   rocs: "/materials/rocs/rocs_thumb.webm",
   mts: "/materials/mts/thumb/mts-thumb.mp4",
   sobchak: "/materials/sobchak/thumb/sobchak_thumb.mp4",
   uralsib: "/materials/uralsib/thumb/uralsib-thumb.mp4",
   "mail-ru": "/materials/mail-ru/thumb/mail-thumb.mp4",
+  "i-want-to-know-everything": "/materials/i-want-to-know-everything/thumb/i-want-to-know-everything-thumb.mp4",
+  mansi: "/materials/mansi/thumb/mansi-thumb.mp4",
+  "stranneyshie-horiz": "/materials/stranneyshie-horiz/thumb/stranneyshie-horiz-thumb.mp4",
+  "sber-high-res": "/materials/sber-high-res/thumb/sber-high-res-thumb.mp4",
+  unprincipled: "/materials/unprincipled/thumb/unprincipled-thumb.mp4",
+  "saint-spring-v3": "/materials/saint-spring-v3/thumb/saint-spring-v3-thumb.mp4",
+  "supermarket-trollys-dream-v1": "/materials/supermarket-trollys-dream-v1/thumb/supermarket-trollys-dream-v1-thumb.mp4",
+  "taxi-v2": "/materials/taxi-v2/thumb/taxi-v2-thumb.mp4",
+  "the-skin-v1": "/materials/the-skin-v1/thumb/the-skin-v1-thumb.mp4",
+  volchok: "/materials/volchok/thumb/volchok-thumb.mp4",
   zvuk: "/materials/zvuk/thumb/zvuk-thumb.mp4",
+  "zvuk-2": "/materials/zvuk-2/thumb/zvuk-2-thumb.mp4",
   "vk-miniapps": "/materials/vk-miniapps/thumb/miniapps-thumb.png",
   "vk-neo": "/materials/vk-neo/thumb/NEO_pw.mp4",
   "sber-terminal": "/materials/sber-terminal/thumb/sber-terminal-thumb.png",
@@ -353,6 +385,47 @@ function nextHomeCardId(projects: SiteContent["home"]["projects"]): string {
   return `p${max + 1}`;
 }
 
+function nextHomeRowId(rows: NonNullable<SiteContent["home"]["rows"]>): string {
+  const max = rows.reduce((acc, row) => {
+    const match = row.id.match(/^r(\d+)$/i);
+    if (!match) {
+      return acc;
+    }
+    const n = Number(match[1]);
+    return Number.isFinite(n) ? Math.max(acc, n) : acc;
+  }, 0);
+  return `r${max + 1}`;
+}
+
+function nextHomeStickerId(stickers: NonNullable<SiteContent["home"]["stickers"]>): string {
+  const max = stickers.reduce((acc, sticker) => {
+    const match = sticker.id.match(/^s(\d+)$/i);
+    if (!match) {
+      return acc;
+    }
+    const n = Number(match[1]);
+    return Number.isFinite(n) ? Math.max(acc, n) : acc;
+  }, 0);
+  return `s${max + 1}`;
+}
+
+function buildDefaultHomeRowsFromCards(cards: SiteContent["home"]["projects"]): Array<{ id: string; projectIds: string[] }> {
+  const ids = cards.map((card) => card.id);
+  const rows: Array<{ id: string; projectIds: string[] }> = [];
+  let offset = 0;
+  let rowNumber = 1;
+  while (offset < ids.length) {
+    const size = rowNumber % 3 === 1 ? 2 : rowNumber % 3 === 2 ? 3 : 1;
+    rows.push({
+      id: `r${rowNumber}`,
+      projectIds: ids.slice(offset, offset + size),
+    });
+    offset += size;
+    rowNumber += 1;
+  }
+  return rows;
+}
+
 function createProjectTemplate(projectKey: string, title: string): ProjectPageContent {
   const normalizedKey = sanitizeProjectKey(projectKey);
   return {
@@ -535,6 +608,39 @@ function ensureHomeProjectLinksAndEntries(content: SiteContent): SiteContent {
     }
   }
 
+  if (typeof next.home.mottoText !== "string") {
+    next.home.mottoText = cloneDefaultContent().home.mottoText ?? "";
+  }
+  const cardIdSet = new Set(next.home.projects.map((card) => card.id));
+  const normalizedRows = Array.isArray(next.home.rows)
+    ? next.home.rows
+      .map((row, index) => {
+        const id = typeof row.id === "string" && row.id.trim() ? row.id : `r${index + 1}`;
+        const projectIds = Array.isArray(row.projectIds)
+          ? row.projectIds.filter((projectId): projectId is string => typeof projectId === "string" && cardIdSet.has(projectId)).slice(0, 3)
+          : [];
+        return { id, projectIds };
+      })
+      .filter((row) => row.projectIds.length > 0)
+    : [];
+  next.home.rows = normalizedRows.length > 0 ? normalizedRows : buildDefaultHomeRowsFromCards(next.home.projects);
+
+  const normalizedStickers = Array.isArray(next.home.stickers)
+    ? next.home.stickers
+      .map((sticker, index) => {
+        if (!sticker || typeof sticker.src !== "string" || !sticker.src.trim()) {
+          return null;
+        }
+        return {
+          id: typeof sticker.id === "string" && sticker.id.trim() ? sticker.id : `s${index + 1}`,
+          src: sticker.src.trim(),
+          alt: typeof sticker.alt === "string" ? sticker.alt : "",
+        };
+      })
+      .filter((item): item is { id: string; src: string; alt: string } => Boolean(item))
+    : [];
+  next.home.stickers = normalizedStickers.length > 0 ? normalizedStickers : structuredClone(cloneDefaultContent().home.stickers ?? []);
+
   return next;
 }
 
@@ -607,6 +713,20 @@ export default function EditorPage() {
         ? "random"
         : "site"
       : "default");
+  const homeRows = content.home.rows ?? [];
+  const homeStickers = content.home.stickers ?? [];
+  const allStickerSourceOptions = useMemo(() => {
+    const media = new Set<string>();
+    for (const folder of materialsIndex.folders) {
+      for (const src of materialsIndex.byFolder[folder] ?? []) {
+        const type = mediaTypeFromSrc(src);
+        if (type === "image" || type === "gif" || type === "video") {
+          media.add(src);
+        }
+      }
+    }
+    return Array.from(media).sort((a, b) => a.localeCompare(b));
+  }, [materialsIndex]);
 
   useEffect(() => {
     let cancelled = false;
@@ -751,7 +871,7 @@ export default function EditorPage() {
     setContent((prev) => {
       const next = structuredClone(prev);
       updater(next);
-      const normalized = ensureSpecialPages(next);
+      const normalized = ensureSpecialPages(ensureHomeProjectLinksAndEntries(next));
       saveSiteContent(normalized);
       return normalized;
     });
@@ -893,6 +1013,17 @@ export default function EditorPage() {
               onChange={(e) =>
                 commit((next) => {
                   next.home.heroTitle = e.target.value;
+                })
+              }
+            />
+          </label>
+          <label>
+            Motto text
+            <input
+              value={content.home.mottoText ?? ""}
+              onChange={(e) =>
+                commit((next) => {
+                  next.home.mottoText = e.target.value;
                 })
               }
             />
@@ -1058,6 +1189,7 @@ export default function EditorPage() {
                         <option value="landscape">landscape</option>
                         <option value="portrait">portrait</option>
                         <option value="tall">tall</option>
+                        <option value="square">square</option>
                       </select>
                     </label>
 
@@ -1087,6 +1219,281 @@ export default function EditorPage() {
                 </article>
               );
             })}
+          </div>
+
+          <h3>Rows (1-3 projects per row)</h3>
+          <div className="editor-list">
+            {homeRows.map((row, rowIndex) => (
+              <article className="editor-item" key={row.id}>
+                <div className="editor-item-head">
+                  <strong>{row.id}</strong>
+                  <div className="editor-mini-actions">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        moveInList("home.rows", rowIndex, -1, (from, to) =>
+                          commit((next) => {
+                            if (to >= 0) {
+                              next.home.rows = reorder(next.home.rows ?? [], from, to);
+                            }
+                          })
+                        )
+                      }
+                    >
+                      ↑
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        moveInList("home.rows", rowIndex, 1, (from, to) =>
+                          commit((next) => {
+                            if (to < (next.home.rows ?? []).length) {
+                              next.home.rows = reorder(next.home.rows ?? [], from, to);
+                            }
+                          })
+                        )
+                      }
+                    >
+                      ↓
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        commit((next) => {
+                          const rows = next.home.rows ?? [];
+                          rows.splice(rowIndex, 1);
+                          next.home.rows = rows.length > 0 ? rows : buildDefaultHomeRowsFromCards(next.home.projects);
+                        })
+                      }
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                <div className="editor-grid-3">
+                  {[0, 1, 2].map((slot) => (
+                    <label key={`${row.id}-slot-${slot}`}>
+                      Project {slot + 1}
+                      <select
+                        value={row.projectIds[slot] ?? ""}
+                        onChange={(e) =>
+                          commit((next) => {
+                            const rows = next.home.rows ?? [];
+                            const target = rows[rowIndex];
+                            if (!target) {
+                              return;
+                            }
+                            const current = [...target.projectIds];
+                            if (!e.target.value) {
+                              if (slot < current.length) {
+                                current.splice(slot, 1);
+                              }
+                            } else if (slot < current.length) {
+                              current[slot] = e.target.value;
+                            } else {
+                              while (current.length < slot) {
+                                current.push("");
+                              }
+                              current.push(e.target.value);
+                            }
+                            target.projectIds = current.filter(Boolean).slice(0, 3);
+                            next.home.rows = rows;
+                          })
+                        }
+                      >
+                        <option value="">(empty)</option>
+                        {content.home.projects.map((card) => (
+                          <option key={`${row.id}-slot-${slot}-${card.id}`} value={card.id}>
+                            {card.id} - {card.title}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="editor-actions">
+            <button
+              type="button"
+              onClick={() =>
+                commit((next) => {
+                  const rows = next.home.rows ?? [];
+                  const unassigned = next.home.projects
+                    .map((card) => card.id)
+                    .filter((id) => !rows.some((row) => row.projectIds.includes(id)));
+                  rows.push({
+                    id: nextHomeRowId(rows),
+                    projectIds: unassigned.slice(0, 3),
+                  });
+                  next.home.rows = rows;
+                })
+              }
+            >
+              Add row
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                commit((next) => {
+                  next.home.rows = buildDefaultHomeRowsFromCards(next.home.projects);
+                })
+              }
+            >
+              Auto-build rows
+            </button>
+          </div>
+
+          <h3>Sticker column</h3>
+          <div className="editor-actions">
+            <button
+              type="button"
+              onClick={async () => {
+                const payload = await loadMaterialsIndex();
+                setMaterialsIndex(payload);
+              }}
+            >
+              Refresh material folders
+            </button>
+          </div>
+          <div className="editor-list">
+            {homeStickers.map((sticker, stickerIndex) => (
+              <article className="editor-item" key={sticker.id}>
+                <div className="editor-item-head">
+                  <strong>{sticker.id}</strong>
+                  <div className="editor-mini-actions">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        moveInList("home.stickers", stickerIndex, -1, (from, to) =>
+                          commit((next) => {
+                            if (to >= 0) {
+                              next.home.stickers = reorder(next.home.stickers ?? [], from, to);
+                            }
+                          })
+                        )
+                      }
+                    >
+                      ↑
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        moveInList("home.stickers", stickerIndex, 1, (from, to) =>
+                          commit((next) => {
+                            if (to < (next.home.stickers ?? []).length) {
+                              next.home.stickers = reorder(next.home.stickers ?? [], from, to);
+                            }
+                          })
+                        )
+                      }
+                    >
+                      ↓
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        commit((next) => {
+                          const stickers = next.home.stickers ?? [];
+                          stickers.splice(stickerIndex, 1);
+                          next.home.stickers = stickers;
+                        })
+                      }
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+
+                <label>
+                  Sticker src
+                  <input
+                    placeholder="/materials/.../thumb.png"
+                    value={sticker.src}
+                    onChange={(e) =>
+                      commit((next) => {
+                        const target = (next.home.stickers ?? [])[stickerIndex];
+                        if (target) {
+                          target.src = e.target.value;
+                        }
+                      })
+                    }
+                  />
+                </label>
+                <label>
+                  Sticker from all materials
+                  <select
+                    value={allStickerSourceOptions.includes(sticker.src) ? sticker.src : ""}
+                    onChange={(e) =>
+                      commit((next) => {
+                        const target = (next.home.stickers ?? [])[stickerIndex];
+                        if (target && e.target.value) {
+                          target.src = e.target.value;
+                        }
+                      })
+                    }
+                  >
+                    <option value="">Select file...</option>
+                    {allStickerSourceOptions.map((src) => (
+                      <option key={`${sticker.id}-${src}`} value={src}>
+                        {src}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  Alt text
+                  <input
+                    value={sticker.alt ?? ""}
+                    onChange={(e) =>
+                      commit((next) => {
+                        const target = (next.home.stickers ?? [])[stickerIndex];
+                        if (target) {
+                          target.alt = e.target.value;
+                        }
+                      })
+                    }
+                  />
+                </label>
+              </article>
+            ))}
+          </div>
+          <div className="editor-actions">
+            <button
+              type="button"
+              onClick={() =>
+                commit((next) => {
+                  const stickers = next.home.stickers ?? [];
+                  const randomThumb = next.home.projects.find((card) => card.thumbnailSrc)?.thumbnailSrc ?? "";
+                  stickers.push({
+                    id: nextHomeStickerId(stickers),
+                    src: randomThumb,
+                    alt: "Sticker",
+                  });
+                  next.home.stickers = stickers;
+                })
+              }
+            >
+              Add sticker
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                commit((next) => {
+                  next.home.stickers = next.home.projects
+                    .filter((card) => card.thumbnailSrc)
+                    .slice(0, 10)
+                    .map((card, index) => ({
+                      id: `s${index + 1}`,
+                      src: card.thumbnailSrc ?? "",
+                      alt: card.title,
+                    }));
+                })
+              }
+            >
+              Generate from project thumbs
+            </button>
           </div>
         </section>
       ) : (

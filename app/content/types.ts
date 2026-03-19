@@ -68,7 +68,7 @@ export type ProjectTag = "2d" | "3d" | "ai" | "mix";
 export type HomeProjectCard = {
   id: string;
   title: string;
-  shape: "landscape" | "portrait" | "tall";
+  shape: "landscape" | "portrait" | "tall" | "square";
   tone: "neo" | "anime" | "aqua" | "sky" | "flat" | "night" | "mint" | "lime" | "ice" | "peach";
   href?: string;
   thumbnailSrc?: string;
@@ -79,11 +79,25 @@ export type HomeProjectCard = {
   };
 };
 
+export type HomeProjectsRow = {
+  id: string;
+  projectIds: string[];
+};
+
+export type HomeSticker = {
+  id: string;
+  src: string;
+  alt?: string;
+};
+
 export type HomePageContent = {
   heroTitle: string;
+  mottoText?: string;
   footerText: string;
   referenceSiteUrl?: string;
   projects: HomeProjectCard[];
+  rows?: HomeProjectsRow[];
+  stickers?: HomeSticker[];
 };
 
 export type SiteContent = {
